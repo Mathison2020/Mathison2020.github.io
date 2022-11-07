@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="http://mathison2020.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://mathison2020.github.io/"/>
+  <updated>2022-11-07T11:29:21.504Z</updated>
+  <id>http://mathison2020.github.io/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://mathison2020.github.io/2022/11/06/001/"/>
+    <id>http://mathison2020.github.io/2022/11/06/001/</id>
+    <published>2022-11-06T13:10:46.501Z</published>
+    <updated>2022-11-07T11:29:21.504Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;【序】&quot;&gt;&lt;a href=&quot;#【序】&quot; class=&quot;headerlink&quot; title=&quot;【序】&quot;&gt;&lt;/a&gt;【序】&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;数位dp就是套模板   ——lwz</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
