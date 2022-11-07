@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title></title>
+      <link href="/2022/11/06/hello-world/"/>
+      <url>/2022/11/06/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>menu:<br>  Index:<br>    url: /<br>    icon: fas fa-home<br>  Tags:<br>    url: /tags<br>    icon: fas fa-tags<br>  Categories:<br>    url: /categories<br>    icon: fas fa-bookmark<br>  Archives:<br>    url: /archives<br>    icon: fas fa-archive<br>  About:<br>    url: /about<br>    icon: fas fa-user-circle<br>  Friends:<br>    url: /friends<br>    icon: fas fa-address-book</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
