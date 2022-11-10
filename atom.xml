@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Mathison&#39;s Blog</title>
+  
+  <subtitle>Mathison</subtitle>
+  <link href="http://mathison2020.github.io/atom.xml" rel="self"/>
+  
+  <link href="http://mathison2020.github.io/"/>
+  <updated>2022-11-10T13:39:17.825Z</updated>
+  <id>http://mathison2020.github.io/</id>
+  
+  <author>
+    <name>Mathison2020</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数字组成的奥妙——数位dp</title>
+    <link href="http://mathison2020.github.io/2022/11/10/001/"/>
+    <id>http://mathison2020.github.io/2022/11/10/001/</id>
+    <published>2022-11-10T12:00:00.000Z</published>
+    <updated>2022-11-10T13:39:17.825Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;【序】&quot;&gt;&lt;a href=&quot;#【序】&quot; class=&quot;headerlink&quot; title=&quot;【序】&quot;&gt;&lt;/a&gt;【序】&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;数位dp就是套模板   ——lwz</summary>
+        
+      
+    
+    
+    
+    <category term="test 1" scheme="http://mathison2020.github.io/categories/test-1/"/>
+    
+    <category term="test 2" scheme="http://mathison2020.github.io/categories/test-1/test-2/"/>
+    
+    
+  </entry>
+  
+</feed>
