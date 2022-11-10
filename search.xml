@@ -13,12 +13,18 @@
       
       <categories>
           
-          <category> test 1 </category>
+          <category> dp </category>
           
-          <category> test 2 </category>
+          <category> 数学 </category>
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 洛谷日报 </tag>
+            
+        </tags>
       
     </entry>
     
