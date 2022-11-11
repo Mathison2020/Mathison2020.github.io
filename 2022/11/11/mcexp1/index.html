@@ -496,10 +496,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="实验一-8255并行接口实验"><a href="#实验一-8255并行接口实验" class="headerlink" title="实验一 8255并行接口实验"></a>实验一 8255并行接口实验</h1><h3 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h3><p><strong>基础部分</strong><br>编写一个基本输入输出程序，使8255的A口为输入，B口为输出，完成拨动开关到数据灯的数据传输。要求：数据灯的显示随开关动态变化。<br><strong>拓展部分</strong><br>在基础实验上增加如下功能：</p>
+                <h1 id="实验一-8255并行接口实验"><a href="#实验一-8255并行接口实验" class="headerlink" title="实验一 8255并行接口实验"></a>实验一 8255并行接口实验</h1><h3 id="1-实验内容"><a href="#1-实验内容" class="headerlink" title="1. 实验内容"></a>1. 实验内容</h3><p><strong>基础部分</strong><br>编写一个基本输入输出程序，使8255的A口为输入，B口为输出，完成拨动开关到数据灯的数据传输。要求：数据灯的显示随开关动态变化。<br><strong>拓展部分</strong><br>在基础实验上增加如下功能：</p>
 <ol>
 <li>若开关 K7~K0 均为高电平，则程序退出。</li>
-<li>当 K0 为高电平时，数据灯高4位亮；当 K0 为低电平时，数据灯低4位亮。</li>
+<li><ul>
+<li>当 K0 为高电平时，数据灯高4位亮；</li>
+<li>当 K0 为低电平时，数据灯低4位亮。</li>
+</ul>
+</li>
 <li><ul>
 <li>当 K1K0=00 时，数据灯全部熄灭；</li>
 <li>当 K1K0=01 时，数据灯低4位亮；</li>
@@ -508,13 +512,52 @@
 </ul>
 </li>
 </ol>
-<h3 id="实验解析"><a href="#实验解析" class="headerlink" title="实验解析"></a>实验解析</h3><h3 id="实验代码"><a href="#实验代码" class="headerlink" title="实验代码"></a>实验代码</h3><h4 id="基础实验："><a href="#基础实验：" class="headerlink" title="基础实验："></a>基础实验：</h4><pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm"><span class="token comment">;IOY0 —— 0600H</span>
-P8255A EQU <span class="token number">0600H</span>
-P8255B EQU <span class="token number">0602H</span>
-P8255C EQU <span class="token number">0604H</span>
-P8255MODE EQU <span class="token number">0606H</span>
+<h3 id="2-注意事项："><a href="#2-注意事项：" class="headerlink" title="2. 注意事项："></a>2. 注意事项：</h3><ol>
+<li>连线时注意与输入输出接口地址相对应</li>
+</ol>
+<table>
+    <tbody><tr>
+        <th></th>
+        <th>信号线</th>
+        <th>编址空间</th>  
+    </tr>
+    <tr>
+        <td>主片8259</td>
+        <td></td>
+        <td>20H、21H</td>
+    </tr>
+    <tr>
+        <td>从片8259</td>
+        <td></td>
+        <td>A0H、A1H</td>
+    </tr>
+    <tr>
+        <td rowspan="4">扩展I/O接口</td>
+        <td>IOY0</td>
+        <td>0600H~063FH</td>
+    </tr>
+    <tr>
+        <td>IOY1</td>
+        <td>0640H~067FH</td>
+    </tr>
+    <tr>
+        <td>IOY2</td>
+        <td>0680H~06BFH</td>
+    </tr>
+    <tr>
+        <td>IOY3</td>
+        <td>06C0H~06FFH</td>
+    </tr>
+</tbody></table>
 
-CODE SEGMENT
+<h3 id="3-连线"><a href="#3-连线" class="headerlink" title="3. 连线"></a>3. 连线</h3><p><img src="/.io//line.jpg" alt="line"></p>
+<h3 id="4-实验代码"><a href="#4-实验代码" class="headerlink" title="4. 实验代码"></a>4. 实验代码</h3><h4 id="基础实验："><a href="#基础实验：" class="headerlink" title="基础实验："></a>基础实验：</h4><pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm"><span class="token comment">;IOY1 —— 0640H</span>
+P8255A EQU <span class="token number">0640H</span>
+P8255B EQU <span class="token number">0642H</span>
+P8255C EQU <span class="token number">0644H</span>
+P8255MODE EQU <span class="token number">0646H</span>
+
+CODE    SEGMENT
         ASSUME <span class="token register variable">CS</span>:CODE
 <span class="token label function">START:</span>  
         MOV <span class="token register variable">DX</span>, P8255MODE
@@ -529,12 +572,12 @@ CODE SEGMENT
 CODE    ENDS
         END START<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="扩展实验："><a href="#扩展实验：" class="headerlink" title="扩展实验："></a>扩展实验：</h4><h5 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h5><pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">P8255A EQU <span class="token number">0600H</span>
-P8255B EQU <span class="token number">0602H</span>
-P8255C EQU <span class="token number">0604H</span>
-P8255MODE EQU <span class="token number">0606H</span>
+<h4 id="扩展实验："><a href="#扩展实验：" class="headerlink" title="扩展实验："></a>扩展实验：</h4><h5 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h5><pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">P8255A EQU <span class="token number">0640H</span>
+P8255B EQU <span class="token number">0642H</span>
+P8255C EQU <span class="token number">0644H</span>
+P8255MODE EQU <span class="token number">0646H</span>
 
-CODE SEGMENT
+CODE    SEGMENT
         ASSUME <span class="token register variable">CS</span>:CODE
 <span class="token label function">START:</span>  
         MOV <span class="token register variable">DX</span>, P8255MODE
@@ -554,12 +597,12 @@ CODE SEGMENT
 CODE    ENDS
         END START<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h5 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h5><pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">P8255A EQU <span class="token number">0600H</span>
-P8255B EQU <span class="token number">0602H</span>
-P8255C EQU <span class="token number">0604H</span>
-P8255MODE EQU <span class="token number">0606H</span>
+<h5 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h5><pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">P8255A EQU <span class="token number">0640H</span>
+P8255B EQU <span class="token number">0642H</span>
+P8255C EQU <span class="token number">0644H</span>
+P8255MODE EQU <span class="token number">0646H</span>
 
-CODE SEGMENT
+CODE    SEGMENT
         ASSUME <span class="token register variable">CS</span>:CODE
 <span class="token label function">START:</span>  
         MOV <span class="token register variable">DX</span>, P8255MODE
@@ -570,7 +613,7 @@ CODE SEGMENT
         IN  <span class="token register variable">AL</span>, <span class="token register variable">DX</span>
         CMP <span class="token register variable">AL</span>, <span class="token number">0FFH</span>               <span class="token comment">;判断是否开关全部为高</span>
         JZ EXIT                    <span class="token comment">;若是，退出程序</span>
-        AND <span class="token register variable">AL</span>, <span class="token number">01H</span>
+        AND <span class="token register variable">AL</span>, <span class="token number">01H</span>                <span class="token comment">;取低位</span>
         CMP <span class="token register variable">AL</span>, <span class="token number">01H</span>
         JNZ L1                     <span class="token comment">;若K0未打开，点亮低四位</span>
         MOV <span class="token register variable">AL</span>, <span class="token number">0F0H</span>               <span class="token comment">;否则，点亮高四位</span>
@@ -587,7 +630,87 @@ CODE SEGMENT
 CODE    ENDS
         END START<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4>
+<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">P8255A EQU <span class="token number">0640H</span>
+P8255B EQU <span class="token number">0642H</span>
+P8255C EQU <span class="token number">0644H</span>
+P8255MODE EQU <span class="token number">0646H</span>
+
+CODE    SEGMENT
+        ASSUME <span class="token register variable">CS</span>:CODE
+<span class="token label function">START:</span>  
+        MOV <span class="token register variable">DX</span>, P8255MODE
+        MOV <span class="token register variable">AL</span>, <span class="token number">90H</span>                <span class="token comment">;初始化8255：A口输入，B口输出</span>
+        OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
+<span class="token label function">MAIN:</span>    
+        MOV <span class="token register variable">DX</span>, P8255A             <span class="token comment">;A口读开关状态</span>
+        IN  <span class="token register variable">AL</span>, <span class="token register variable">DX</span>
+        CMP <span class="token register variable">AL</span>, <span class="token number">0FFH</span>               <span class="token comment">;判断是否开关全部为高</span>
+        JZ EXIT                    <span class="token comment">;若是，退出程序</span>
+        AND <span class="token register variable">AL</span>, <span class="token number">03H</span>                <span class="token comment">;取低2位</span>
+        CMP <span class="token register variable">AL</span>, 0H
+        JNZ L1                     <span class="token comment">;非00</span>
+        MOV <span class="token register variable">AL</span>, <span class="token number">00H</span>                <span class="token comment">;00：全灭</span>
+        JMP OUTPUT
+<span class="token label function">L1:</span>
+        CMP <span class="token register variable">AL</span>, 1H
+        JNZ L2                     <span class="token comment">;非01 </span>
+        MOV <span class="token register variable">AL</span>, <span class="token number">0FH</span>                <span class="token comment">;01：点亮低四位</span>
+        JMP OUTPUT
+<span class="token label function">L2:</span>
+        CMP <span class="token register variable">AL</span>, 2H
+        JNZ L3                     <span class="token comment">;非11 </span>
+        MOV <span class="token register variable">AL</span>, <span class="token number">0F0H</span>               <span class="token comment">;01：点亮高四位</span>
+        JMP OUTPUT
+<span class="token label function">L2:</span>
+        MOV <span class="token register variable">AL</span>, <span class="token number">0FFH</span>               <span class="token comment">;11：全部点亮</span>
+<span class="token label function">OUTPUT:</span>
+        MOV <span class="token register variable">DX</span>, P8255B             <span class="token comment">;B口送LED状态</span>
+        OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
+        JMP MAIN
+<span class="token label function">EXIT:</span>
+        MOV <span class="token register variable">AH</span>,<span class="token number">4CH</span>
+        INT <span class="token number">21H</span>
+CODE    ENDS
+        END START<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>另一种实现方法：</p>
+<pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">P8255A EQU <span class="token number">0640H</span>
+P8255B EQU <span class="token number">0642H</span>
+P8255C EQU <span class="token number">0644H</span>
+P8255MODE EQU <span class="token number">0646H</span>
+
+CODE    SEGMENT
+        ASSUME <span class="token register variable">CS</span>:CODE
+<span class="token label function">START:</span>  
+        MOV <span class="token register variable">DX</span>, P8255MODE
+        MOV <span class="token register variable">AL</span>, <span class="token number">90H</span>                <span class="token comment">;初始化8255：A口输入，B口输出</span>
+        OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
+<span class="token label function">MAIN:</span>
+        MOV <span class="token register variable">BL</span>, <span class="token number">00H</span>
+        MOV <span class="token register variable">DX</span>, P8255A             <span class="token comment">;A口读开关状态</span>
+        IN  <span class="token register variable">AL</span>, <span class="token register variable">DX</span>
+        CMP <span class="token register variable">AL</span>, <span class="token number">0FFH</span>               <span class="token comment">;判断是否开关全部为高</span>
+        JZ EXIT                    <span class="token comment">;若是，退出程序</span>
+        PUSH <span class="token register variable">AX</span>                    <span class="token comment">;保存状态</span>
+<span class="token label function">LOWL:</span>        
+        AND <span class="token register variable">AL</span>, <span class="token number">01H</span>                <span class="token comment">;检测K0</span>
+        JZ HIGHL                   <span class="token comment">;K0=0</span>
+        OR <span class="token register variable">BL</span>, <span class="token number">0FH</span>                 <span class="token comment">;点亮低4位</span>
+<span class="token label function">HIGHL:</span>
+        AND <span class="token register variable">AL</span>, <span class="token number">02H</span>                <span class="token comment">;检测K1</span>
+        JZ OUTPUT                  <span class="token comment">;K1=0</span>
+        OR <span class="token register variable">BL</span>, <span class="token number">0F0H</span>                <span class="token comment">;点亮高4位</span>
+<span class="token label function">OUTPUT:</span>
+        MOV <span class="token register variable">AL</span>, <span class="token register variable">BL</span>
+        MOV <span class="token register variable">DX</span>, P8255B             <span class="token comment">;B口送LED状态</span>
+        OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
+        JMP MAIN
+<span class="token label function">EXIT:</span>
+        MOV <span class="token register variable">AH</span>,<span class="token number">4CH</span>
+        INT <span class="token number">21H</span>
+CODE    ENDS
+        END START<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
