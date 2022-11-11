@@ -6,7 +6,7 @@
   <link href="http://mathison2020.github.io/atom.xml" rel="self"/>
   
   <link href="http://mathison2020.github.io/"/>
-  <updated>2022-11-11T12:46:20.502Z</updated>
+  <updated>2022-11-11T16:10:03.735Z</updated>
   <id>http://mathison2020.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>实验二 存储器扩展实验</title>
+    <link href="http://mathison2020.github.io/2022/11/11/mcexp2/"/>
+    <id>http://mathison2020.github.io/2022/11/11/mcexp2/</id>
+    <published>2022-11-11T13:57:55.000Z</published>
+    <updated>2022-11-11T16:10:03.735Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;实验二-存储器扩展实验&quot;&gt;&lt;a href=&quot;#实验二-存储器扩展实验&quot; class=&quot;headerlink&quot; title=&quot;实验二 存储器扩展实验&quot;&gt;&lt;/a&gt;实验二 存储器扩展实验&lt;/h1&gt;&lt;h3 id=&quot;1-实验内容&quot;&gt;&lt;a href=&quot;#1-实验内容&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="微机实验" scheme="http://mathison2020.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%AE%9E%E9%AA%8C/"/>
+    
+    
+    <category term="微机实验" scheme="http://mathison2020.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%AE%9E%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>实验一 8255并行接口实验</title>
     <link href="http://mathison2020.github.io/2022/11/11/mcexp1/"/>
     <id>http://mathison2020.github.io/2022/11/11/mcexp1/</id>
     <published>2022-11-11T09:56:24.000Z</published>
-    <updated>2022-11-11T12:46:20.502Z</updated>
+    <updated>2022-11-11T14:16:24.125Z</updated>
     
     
       
@@ -46,7 +71,7 @@
     <link href="http://mathison2020.github.io/2022/11/10/001/"/>
     <id>http://mathison2020.github.io/2022/11/10/001/</id>
     <published>2022-11-10T12:00:00.000Z</published>
-    <updated>2022-11-11T13:28:31.534Z</updated>
+    <updated>2022-11-11T14:16:12.112Z</updated>
     
     
       
