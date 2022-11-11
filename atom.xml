@@ -6,7 +6,7 @@
   <link href="http://mathison2020.github.io/atom.xml" rel="self"/>
   
   <link href="http://mathison2020.github.io/"/>
-  <updated>2022-11-11T08:50:19.945Z</updated>
+  <updated>2022-11-11T09:12:04.725Z</updated>
   <id>http://mathison2020.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://mathison2020.github.io/2022/11/10/001/"/>
     <id>http://mathison2020.github.io/2022/11/10/001/</id>
     <published>2022-11-10T12:00:00.000Z</published>
-    <updated>2022-11-11T08:50:19.945Z</updated>
+    <updated>2022-11-11T09:12:04.725Z</updated>
     
     
       
@@ -40,7 +40,7 @@
     <category term="数学" scheme="http://mathison2020.github.io/categories/dp/%E6%95%B0%E5%AD%A6/"/>
     
     
-    <category term="洛谷日报" scheme="http://mathison2020.github.io/tags/%E6%B4%9B%E8%B0%B7%E6%97%A5%E6%8A%A5/"/>
+    <category term="算法" scheme="http://mathison2020.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
