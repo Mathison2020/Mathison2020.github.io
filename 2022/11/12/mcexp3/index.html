@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="MCExp3, Mathison&#39;s Blog">
+    <meta name="keywords" content="实验三 8259中断优先级实验, Mathison&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>MCExp3 | Mathison&#39;s Blog</title>
+    <title>实验三 8259中断优先级实验 | Mathison&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -331,7 +331,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">MCExp3</h1>
+                    <h1 class="description center-align post-title">实验三 8259中断优先级实验</h1>
                 </div>
             </div>
         </div>
@@ -523,7 +523,7 @@
 <li><p>任意时刻按下KK2，点亮的LED灯立即向左循环移动。</p>
 </li>
 </ul>
-<h3 id="2-实验原理："><a href="#2-实验原理：" class="headerlink" title="2. 实验原理："></a>2. 实验原理：</h3><p>在实验系统中，将主控制器的IR6、IR7以及从控制器的IR1开放出来供实验使用，主片8259的IR4供系统串口使用。</p>
+<h3 id="2-实验原理"><a href="#2-实验原理" class="headerlink" title="2. 实验原理"></a>2. 实验原理</h3><p>在实验系统中，将主控制器的IR6、IR7以及从控制器的IR1开放出来供实验使用，主片8259的IR4供系统串口使用。</p>
 <p><img src="https://s2.loli.net/2022/11/12/njgw7tsqodyB1IH.jpg" alt="8259的内部连接及外部管脚引出"></p>
 <p><img src="https://s2.loli.net/2022/11/12/uvICSawn56j73Kf.jpg" alt="ICU寄存器列表"></p>
 <p><img src="https://s2.loli.net/2022/11/12/LATGsji92yIpRcB.jpg" alt="中断向量"></p>
@@ -555,14 +555,14 @@ CODE SEGMENT
     MOV <span class="token register variable">DX</span>, P8255B
     OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
 
-    LEA <span class="token register variable">AX</span>, MIR6            <span class="token comment">;</span>
+    LEA <span class="token register variable">AX</span>, MIR6               <span class="token comment">;IR6中断向量填充</span>
     MOV <span class="token register variable">SI</span>, <span class="token number">0038H</span>
     MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
     MOV <span class="token register variable">AX</span>, <span class="token register variable">CS</span>
     MOV <span class="token register variable">SI</span>, <span class="token number">003AH</span>
     MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
 
-    LEA <span class="token register variable">AX</span>, MIR7
+    LEA <span class="token register variable">AX</span>, MIR7               <span class="token comment">;IR7中断向量填充</span>
     MOV <span class="token register variable">SI</span>, <span class="token number">003CH</span>
     MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
     MOV <span class="token register variable">AX</span>, <span class="token register variable">CS</span>     
@@ -587,15 +587,15 @@ CODE SEGMENT
     OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
     JMP MAIN
 <span class="token label function">MIR6:</span>    
-    MOV <span class="token register variable">AL</span>, <span class="token number">0FH</span>
+    MOV <span class="token register variable">AL</span>, <span class="token number">0FH</span>                 <span class="token comment">;只点亮低四位</span>
     MOV <span class="token register variable">DX</span>, P8255B
     OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
     <span class="token comment">;MOV AL, 20H                ;手动结束中断</span>
     <span class="token comment">;OUT 20H, AL                ;自动模式下不需要</span>
-    CALL DELAY
+    CALL DELAY                  <span class="token comment">;等待一段时间</span>
     IRET        
 <span class="token label function">MIR7:</span>         
-    MOV <span class="token register variable">AL</span>, <span class="token number">0F0H</span>
+    MOV <span class="token register variable">AL</span>, <span class="token number">0F0H</span>                <span class="token comment">;只点亮高四位</span>
     MOV <span class="token register variable">DX</span>, P8255B
     OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
     <span class="token comment">;MOV AL, 20H</span>
@@ -711,85 +711,85 @@ P8255C EQU <span class="token number">0646H</span>
 P8255MODE EQU <span class="token number">0646H</span>
 
 CODE SEGMENT 
-	ASSUME <span class="token register variable">CS</span>:CODE
+    ASSUME <span class="token register variable">CS</span>:CODE
 <span class="token label function">START:</span> 
     MOV <span class="token register variable">AX</span>, <span class="token number">0000H</span>
-	MOV <span class="token register variable">DS</span>, <span class="token register variable">AX</span>
-	MOV <span class="token register variable">DX</span>, P8255MODE
-	MOV <span class="token register variable">AL</span>, <span class="token number">80H</span>
-	OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
-	MOV <span class="token register variable">DX</span>, P8255B
-	MOV <span class="token register variable">AL</span>, <span class="token number">80H</span>
-	OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
-	
-	LEA <span class="token register variable">AX</span>, MIR6
-	MOV <span class="token register variable">SI</span>, <span class="token number">38H</span>
-	MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
-	MOV <span class="token register variable">AX</span>, <span class="token register variable">CS</span>
-	MOV <span class="token register variable">SI</span>, <span class="token number">3AH</span>
-	MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
-		
-	LEA <span class="token register variable">AX</span>, MIR7
-	MOV <span class="token register variable">SI</span>, <span class="token number">3CH</span>
-	MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
-	MOV <span class="token register variable">AX</span>, <span class="token register variable">CS</span>
-	MOV <span class="token register variable">SI</span>, <span class="token number">3EH</span>
-	MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
- 
-	CLI
-	MOV <span class="token register variable">AL</span>, <span class="token number">11H</span>			<span class="token comment">;ICW1</span>
-	OUT <span class="token number">20H</span>, <span class="token register variable">AL</span>
-	MOV <span class="token register variable">AL</span>, <span class="token number">08H</span>			<span class="token comment">;ICW2</span>
-	OUT <span class="token number">21H</span>, <span class="token register variable">AL</span>
-	MOV <span class="token register variable">AL</span>, <span class="token number">04H</span>			<span class="token comment">;ICW3</span>
-	OUT <span class="token number">21H</span>, <span class="token register variable">AL</span>
-	MOV <span class="token register variable">AL</span>, 07HB		<span class="token comment">;ICW4</span>
-	OUT <span class="token number">21H</span>, <span class="token register variable">AL</span>
-	MOV <span class="token register variable">AL</span>, <span class="token number">2FH</span>			<span class="token comment">;OCW1</span>
-	OUT <span class="token number">21H</span>, <span class="token register variable">AL</span>   
-	STI
-<span class="token label function">MAIN:</span>	
+    MOV <span class="token register variable">DS</span>, <span class="token register variable">AX</span>
+    MOV <span class="token register variable">DX</span>, P8255MODE
+    MOV <span class="token register variable">AL</span>, <span class="token number">80H</span>
+    OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
+    MOV <span class="token register variable">DX</span>, P8255B
+    MOV <span class="token register variable">AL</span>, <span class="token number">80H</span>
+    OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
+
+    LEA <span class="token register variable">AX</span>, MIR6
+    MOV <span class="token register variable">SI</span>, <span class="token number">38H</span>
+    MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
+    MOV <span class="token register variable">AX</span>, <span class="token register variable">CS</span>
+    MOV <span class="token register variable">SI</span>, <span class="token number">3AH</span>
+    MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
+
+    LEA <span class="token register variable">AX</span>, MIR7
+    MOV <span class="token register variable">SI</span>, <span class="token number">3CH</span>
+    MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
+    MOV <span class="token register variable">AX</span>, <span class="token register variable">CS</span>
+    MOV <span class="token register variable">SI</span>, <span class="token number">3EH</span>
+    MOV <span class="token operator">[</span><span class="token register variable">ES</span>:<span class="token register variable">SI</span><span class="token operator">]</span>, <span class="token register variable">AX</span>
+
+    CLI
+    MOV <span class="token register variable">AL</span>, <span class="token number">11H</span>            <span class="token comment">;ICW1</span>
+    OUT <span class="token number">20H</span>, <span class="token register variable">AL</span>
+    MOV <span class="token register variable">AL</span>, <span class="token number">08H</span>            <span class="token comment">;ICW2</span>
+    OUT <span class="token number">21H</span>, <span class="token register variable">AL</span>
+    MOV <span class="token register variable">AL</span>, <span class="token number">04H</span>            <span class="token comment">;ICW3</span>
+    OUT <span class="token number">21H</span>, <span class="token register variable">AL</span>
+    MOV <span class="token register variable">AL</span>, 07HB        <span class="token comment">;ICW4</span>
+    OUT <span class="token number">21H</span>, <span class="token register variable">AL</span>
+    MOV <span class="token register variable">AL</span>, <span class="token number">2FH</span>            <span class="token comment">;OCW1</span>
+    OUT <span class="token number">21H</span>, <span class="token register variable">AL</span>   
+    STI
+<span class="token label function">MAIN:</span>    
     JMP MAIN
 
-<span class="token label function">MIR6:</span>	
-	STI
-	PUSH <span class="token register variable">AX</span>
+<span class="token label function">MIR6:</span>    
+    STI
+    PUSH <span class="token register variable">AX</span>
 <span class="token label function">AA1:</span>
-	MOV <span class="token register variable">DX</span>, P8255B
-	IN  <span class="token register variable">AL</span>, <span class="token register variable">DX</span>
-	CMP <span class="token register variable">AL</span>, <span class="token number">01H</span>
-	JZ  EXIT6
-	ROR <span class="token register variable">AL</span>, <span class="token number">1</span>	
-	CALL DELAY
-	OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>   
-	JMP AA1
+    MOV <span class="token register variable">DX</span>, P8255B
+    IN  <span class="token register variable">AL</span>, <span class="token register variable">DX</span>
+    CMP <span class="token register variable">AL</span>, <span class="token number">01H</span>
+    JZ  EXIT6
+    ROR <span class="token register variable">AL</span>, <span class="token number">1</span>    
+    CALL DELAY
+    OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>   
+    JMP AA1
 <span class="token label function">EXIT6:</span>  
-	POP <span class="token register variable">AX</span>
-	IRET 
+    POP <span class="token register variable">AX</span>
+    IRET 
 
 <span class="token label function">MIR7:</span>  
-	STI
-	PUSH <span class="token register variable">AX</span>
-<span class="token label function">AA2:</span>	
-	MOV <span class="token register variable">DX</span>, P8255B
-	IN  <span class="token register variable">AL</span>, <span class="token register variable">DX</span>
-	CMP <span class="token register variable">AL</span>, <span class="token number">80H</span>
-	JZ  EXIT7
-    
-	ROL <span class="token register variable">AL</span>, <span class="token number">1</span>
-	CALL DELAY
-	OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
-	JMP AA2    
+    STI
+    PUSH <span class="token register variable">AX</span>
+<span class="token label function">AA2:</span>    
+    MOV <span class="token register variable">DX</span>, P8255B
+    IN  <span class="token register variable">AL</span>, <span class="token register variable">DX</span>
+    CMP <span class="token register variable">AL</span>, <span class="token number">80H</span>
+    JZ  EXIT7
+
+    ROL <span class="token register variable">AL</span>, <span class="token number">1</span>
+    CALL DELAY
+    OUT <span class="token register variable">DX</span>, <span class="token register variable">AL</span>
+    JMP AA2    
 <span class="token label function">EXIT7:</span>  
-	POP <span class="token register variable">AX</span>
-	IRET
- 
+    POP <span class="token register variable">AX</span>
+    IRET
+
 <span class="token label function">DELAY:</span>
-	MOV <span class="token register variable">CX</span>, <span class="token number">0FFFFH</span>
-	LOOP <span class="token operator">$</span>
-	RET	
+    MOV <span class="token register variable">CX</span>, <span class="token number">0FFFFH</span>
+    LOOP <span class="token operator">$</span>
+    RET    
 CODE ENDS
-	 END START<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+     END START<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -1047,17 +1047,16 @@ CODE ENDS
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/11/12/mcexp3/">
+                <a href="/2022/11/14/mcexp4/">
                     <div class="card-image">
                         
-                        <img src="https://s2.loli.net/2022/11/11/IqVHzLn4RSis9Xk.jpg" class="responsive-img" alt="MCExp3">
+                        <img src="https://s2.loli.net/2022/11/11/IqVHzLn4RSis9Xk.jpg" class="responsive-img" alt="实验四 A/D转换实验">
                         
-                        <span class="card-title">MCExp3</span>
+                        <span class="card-title">实验四 A/D转换实验</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1067,9 +1066,9 @@ CODE ENDS
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-12
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-14
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1082,7 +1081,6 @@ CODE ENDS
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
