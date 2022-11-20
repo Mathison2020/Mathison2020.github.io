@@ -29,9 +29,9 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Mathison's Blog" type="application/atom+xml">
+
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="Mathison's Blog" type="application/atom+xml">
 </head>
 
 
@@ -498,16 +498,16 @@
             <div id="articleContent">
                 <h1 id="实验二-存储器扩展实验"><a href="#实验二-存储器扩展实验" class="headerlink" title="实验二 存储器扩展实验"></a>实验二 存储器扩展实验</h1><h3 id="1-实验内容"><a href="#1-实验内容" class="headerlink" title="1. 实验内容"></a>1. 实验内容</h3><p><strong>基础部分</strong></p>
 <ul>
-<li>编写实验程序，将0000H～000FH（16个十六位的数据）写入SRAM从8000:0000H起始的一段空间中，并通过系统命令查看该存储空间，检查写入数据是否正确。</li>
+<li>编写实验程序，将 0000H～000FH（16个十六位的数据）写入SRAM从 8000:0000H 起始的一段空间中，并通过系统命令查看该存储空间，检查写入数据是否正确。</li>
 <li>要求：分别按规则字、非规则字和字节三种方式将数据写入存储器，并观察实验结果。</li>
 </ul>
 <p><strong>拓展部分</strong></p>
 <p>编写程序实现如下功能：</p>
 <ul>
-<li>当K1K0=00时，按规则字将0000H~000FH写入8000:0000H开始的16个字中；</li>
-<li>当K1K0=01时，按非规则字将0000H~000FH写入8000:0000H开始的16个字中；</li>
-<li>当K1K0=10时，按字节将0000H~000FH写入8000:0000H开始的16个字中；</li>
-<li>当K1K0=11时，退出程序</li>
+<li>当 K1K0=00 时，按<strong>规则字</strong>将 0000H~000FH 写入 8000:0000H 开始的16个字中；</li>
+<li>当 K1K0=01 时，按<strong>非规则字</strong>将 0000H~000FH 写入 8000:0000H 开始的16个字中；</li>
+<li>当 K1K0=10 时，按<strong>字节</strong>将 0000H~000FH 写入 8000:0000H 开始的16个字中；</li>
+<li>当 K1K0=11 时，退出程序</li>
 </ul>
 <h3 id="2-注意事项："><a href="#2-注意事项：" class="headerlink" title="2. 注意事项："></a>2. 注意事项：</h3><p><img src="https://s2.loli.net/2022/11/12/SCnVG8xwDPKmzLr.jpg" alt="写规则字（左）和非规则字（右）简单时序图"></p>
 <h3 id="3-连线"><a href="#3-连线" class="headerlink" title="3. 连线"></a>3. 连线</h3><p><img src="https://s2.loli.net/2022/11/11/6sOSAwkIU5dpFxr.jpg" alt="机箱连线"></p>

@@ -6,7 +6,7 @@
   <link href="http://mathison2020.github.io/atom.xml" rel="self"/>
   
   <link href="http://mathison2020.github.io/"/>
-  <updated>2022-11-18T06:00:11.709Z</updated>
+  <updated>2022-11-18T06:41:20.550Z</updated>
   <id>http://mathison2020.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>实验五 D/A转换实验</title>
+    <link href="http://mathison2020.github.io/2022/11/14/mcexp5/"/>
+    <id>http://mathison2020.github.io/2022/11/14/mcexp5/</id>
+    <published>2022-11-14T08:48:05.000Z</published>
+    <updated>2022-11-18T06:41:20.550Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;实验五-D-x2F-A转换实验&quot;&gt;&lt;a href=&quot;#实验五-D-x2F-A转换实验&quot; class=&quot;headerlink&quot; title=&quot;实验五 D/A转换实验&quot;&gt;&lt;/a&gt;实验五 D/A转换实验&lt;/h1&gt;&lt;h3 id=&quot;1-实验内容&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="微机实验" scheme="http://mathison2020.github.io/categories/%E5%BE%AE%E6%9C%BA%E5%AE%9E%E9%AA%8C/"/>
+    
+    
+    <category term="微机实验" scheme="http://mathison2020.github.io/tags/%E5%BE%AE%E6%9C%BA%E5%AE%9E%E9%AA%8C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>实验四 A/D转换实验</title>
     <link href="http://mathison2020.github.io/2022/11/14/mcexp4/"/>
     <id>http://mathison2020.github.io/2022/11/14/mcexp4/</id>
     <published>2022-11-14T06:45:51.000Z</published>
-    <updated>2022-11-18T06:00:11.709Z</updated>
+    <updated>2022-11-18T06:07:22.164Z</updated>
     
     
       
@@ -46,7 +71,7 @@
     <link href="http://mathison2020.github.io/2022/11/12/mcexp3/"/>
     <id>http://mathison2020.github.io/2022/11/12/mcexp3/</id>
     <published>2022-11-12T13:28:06.000Z</published>
-    <updated>2022-11-18T05:17:31.288Z</updated>
+    <updated>2022-11-18T06:06:45.254Z</updated>
     
     
       
@@ -71,7 +96,7 @@
     <link href="http://mathison2020.github.io/2022/11/11/mcexp2/"/>
     <id>http://mathison2020.github.io/2022/11/11/mcexp2/</id>
     <published>2022-11-11T13:57:55.000Z</published>
-    <updated>2022-11-11T16:36:31.799Z</updated>
+    <updated>2022-11-18T06:05:09.818Z</updated>
     
     
       
@@ -121,7 +146,7 @@
     <link href="http://mathison2020.github.io/2022/11/10/001/"/>
     <id>http://mathison2020.github.io/2022/11/10/001/</id>
     <published>2022-11-10T12:00:00.000Z</published>
-    <updated>2022-11-11T14:16:12.112Z</updated>
+    <updated>2022-11-18T10:19:57.051Z</updated>
     
     
       
@@ -135,12 +160,12 @@
     
     
     
-    <category term="dp" scheme="http://mathison2020.github.io/categories/dp/"/>
-    
-    <category term="数学" scheme="http://mathison2020.github.io/categories/dp/%E6%95%B0%E5%AD%A6/"/>
+    <category term="算法" scheme="http://mathison2020.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
-    <category term="算法" scheme="http://mathison2020.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="dp" scheme="http://mathison2020.github.io/tags/dp/"/>
+    
+    <category term="数学" scheme="http://mathison2020.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
     
   </entry>
   
