@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="实验六 8254定时/计数器实验, Mathison&#39;s Blog">
+    <meta name="keywords" content="实验八 数码管显示实验, Mathison&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>实验六 8254定时/计数器实验 | Mathison&#39;s Blog</title>
+    <title>实验八 数码管显示实验 | Mathison&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -331,7 +331,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">实验六 8254定时/计数器实验</h1>
+                    <h1 class="description center-align post-title">实验八 数码管显示实验</h1>
                 </div>
             </div>
         </div>
@@ -472,7 +472,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-11-18
+                    2022-11-21
                 </div>
                 
 
@@ -496,33 +496,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="实验六-8254定时-x2F-计数器实验"><a href="#实验六-8254定时-x2F-计数器实验" class="headerlink" title="实验六 8254定时/计数器实验"></a>实验六 8254定时/计数器实验</h1><h3 id="1-实验内容"><a href="#1-实验内容" class="headerlink" title="1. 实验内容"></a>1. 实验内容</h3><p><strong>基础部分</strong></p>
-<p>编写程序，使 8254 的<strong>计数器 1</strong> 分别工作在方式 0、1、2、3 下，在示波器上观察各工作方式下 OUT1 的输出波形。</p>
+                <h1 id="实验八-数码管显示实验"><a href="#实验八-数码管显示实验" class="headerlink" title="实验八 数码管显示实验"></a>实验八 数码管显示实验</h1><h3 id="1-实验内容"><a href="#1-实验内容" class="headerlink" title="1. 实验内容"></a>1. 实验内容</h3><p><strong>基础部分</strong></p>
+<p>用一片 8255 接口芯片的 A 口和 B 口分别连接数码管段码接口（ABCDEFG、Dp）和位码接口（X1~X6）。编写程序实现以下两种显示方式：</p>
+<ol>
+<li><p>使六位数码管从右到左逐位显示移动的数字 0 到 9，即数字 0 从最右端移动到最左端，数字 1 从最右端移动到最左端，….，数字 9 从最右端移动到最左端，循环上述过程；</p>
+</li>
+<li><p>使六位数码管从左到右显示稳定的数字“123456”。</p>
+</li>
+</ol>
 <p><strong>扩展部分</strong></p>
 <ol>
-<li><p>使用单脉冲开关<strong>手动生成</strong> 8254 的输入时钟，观察<strong>方式 0</strong>的输出波形；</p>
-</li>
-<li><p>编写程序，在示波器上显示周期为 <strong>1s 的方波</strong>；</p>
-</li>
-<li><p>利用 8254 <strong>方式2或方式3</strong> 精确定时，控制 LED 灯 D7~D0 的点亮：</p>
-<ul>
-<li><p>初始时，D7~D0全部熄灭；</p>
-</li>
-<li><p>1秒钟之后点亮D0，再经过1秒D1D0点亮，…，8秒钟之后D7~D0全部点亮。</p>
-</li>
-</ul>
-</li>
+<li>编写数码管显示子程序，可实现 1 个或多个数码管的稳定显示，使用入口参数定义拟显示的位置和显示的内容。使用该子程序，重新完成基础实验 1 和 2。</li>
+<li>在数码管上显示学号后六位，并使用 6 个开关控制对应数码管的亮灭（例如，开关为 1 点亮，为 0 熄灭）。</li>
+<li>在左侧的三个数码管上显示“123”，每隔 1 秒钟（可用软件延时，也可用 8254定时）“123”向右移动一位（循环）</li>
 </ol>
-<h3 id="2-实验原理"><a href="#2-实验原理" class="headerlink" title="2. 实验原理"></a>2. 实验原理</h3><h4 id="8254-工作方式介绍"><a href="#8254-工作方式介绍" class="headerlink" title="8254 工作方式介绍"></a>8254 工作方式介绍</h4><ol>
-<li>方式 0：计数到 0 结束输出正跃变信号方式。</li>
-<li>方式 1：硬件可重触发单稳方式。</li>
-<li>方式 2：频率发生器方式。</li>
-<li>方式 3：方波发生器。</li>
-<li>方式 4：软件触发选通方式。</li>
-<li>方式 5：硬件触发选通方式</li>
-</ol>
-<h3 id="3-连线"><a href="#3-连线" class="headerlink" title="3. 连线"></a>3. 连线</h3><p><img src="https://s2.loli.net/2022/11/22/IHuiJ6KjxXmvkZE.jpg" alt="机箱连线"></p>
-<p>CLK1和GATE1具体接法见<strong>实验分析</strong></p>
+<h3 id="2-实验原理"><a href="#2-实验原理" class="headerlink" title="2. 实验原理"></a>2. 实验原理</h3><h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="3-连线"><a href="#3-连线" class="headerlink" title="3. 连线"></a>3. 连线</h3><p><img src="/.io//line8.jpg" alt="机箱连线"></p>
 <h3 id="4-实验代码"><a href="#4-实验代码" class="headerlink" title="4. 实验代码"></a>4. 实验代码</h3><h4 id="基础部分："><a href="#基础部分：" class="headerlink" title="基础部分："></a>基础部分：</h4><pre class="line-numbers language-nasm" data-language="nasm"><code class="language-nasm">P8254_0 EQU <span class="token number">0600H</span>
 P8254_1 EQU <span class="token number">0602H</span> 
 P8254_2 EQU <span class="token number">0604H</span> 
@@ -698,7 +686,7 @@ CODE ENDS
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Mathison2020.github.io/2022/11/18/mcexp6/">http://Mathison2020.github.io/2022/11/18/mcexp6/</a>
+                    <a href="http://Mathison2020.github.io/2022/11/21/mcexp8/">http://Mathison2020.github.io/2022/11/21/mcexp8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -929,9 +917,10 @@ CODE ENDS
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/11/21/mcexp8/">
                     <div class="card-image">
@@ -948,9 +937,9 @@ CODE ENDS
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -963,6 +952,7 @@ CODE ENDS
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -981,12 +971,12 @@ CODE ENDS
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/11/14/mcexp5/">
+                <a href="/2022/11/18/mcexp6/">
                     <div class="card-image">
                         
-                        <img src="https://s2.loli.net/2022/11/11/IqVHzLn4RSis9Xk.jpg" class="responsive-img" alt="实验五 D/A转换实验">
+                        <img src="https://s2.loli.net/2022/11/11/IqVHzLn4RSis9Xk.jpg" class="responsive-img" alt="实验六 8254定时/计数器实验">
                         
-                        <span class="card-title">实验五 D/A转换实验</span>
+                        <span class="card-title">实验六 8254定时/计数器实验</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -997,7 +987,7 @@ CODE ENDS
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-18
                             </span>
                         <span class="publish-author">
                             
