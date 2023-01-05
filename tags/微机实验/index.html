@@ -364,10 +364,19 @@
             <div class="tag-chips">
                 
                 
+                <a href="/tags/%E5%BE%AE%E6%9C%BA%E5%AE%9E%E9%AA%8C/" title="微机实验: 8">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active "
+                            data-tagname="微机实验" style="background-color: #F9EBEA;">微机实验
+                        <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/tags/dp/" title="dp: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="dp" style="background-color: #F9EBEA;">dp
+                            data-tagname="dp" style="background-color: #F5EEF8;">dp
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -376,17 +385,8 @@
                 <a href="/tags/%E6%95%B0%E5%AD%A6/" title="数学: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="数学" style="background-color: #F5EEF8;">数学
+                            data-tagname="数学" style="background-color: #D5F5E3;">数学
                         <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%BE%AE%E6%9C%BA%E5%AE%9E%E9%AA%8C/" title="微机实验: 8">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="微机实验" style="background-color: #D5F5E3;">微机实验
-                        <span class="tag-length">8</span>
                     </span>
                 </a>
                 
@@ -927,38 +927,15 @@ $(function () {
     
 
     
-        <script src="//code.tidio.co/5cnl1oid59w4ioj4retvouo54kpymrgo.js"></script>
-        <script>
-            $(document).ready(function () {
-                setInterval(change_Tidio, 50);
-                function change_Tidio() {
-                    var tidio=$("#tidio-chat iframe");
-                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
-                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";
-                        document.getElementById("tidio-chat-iframe").style.right="-15px";
-                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
-                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                    }
-                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
-                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
-                        document.getElementById("tidio-chat-iframe").style.right="-15px";
-                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                    }
-                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
-                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
-                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                    }
-                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
-                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
-                    }
-                }
-            });
-        </script>
-    
 
     
 
 	
+    
+    <script type="text/javascript" color="0,0,255"
+        pointColor="0,0,255" opacity='0.7'
+        zIndex="-1" count="99"
+        src="/libs/background/canvas-nest.js"></script>
     
 
     
