@@ -1,0 +1,1513 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="数字组成的奥妙——数位dp, Mathison&#39;s Blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>数字组成的奥妙——数位dp | Mathison&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Mathison&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Mathison&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/Mathison2020" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/Mathison2020" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入密码哦~~~')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">数字组成的奥妙——数位dp</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/dp/">
+                                <span class="chip bg-color">dp</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                                <span class="chip bg-color">数学</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-11-10
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="【序】"><a href="#【序】" class="headerlink" title="【序】"></a>【序】</h2><blockquote>
+<p>数位dp就是套模板   ——lwz dalao</p>
+</blockquote>
+<p><em>（数位dp确实可以套模板，但笔者建议还是要理解这个过程，这样才能灵活变化）</em> </p>
+<h2 id="【引言】"><a href="#【引言】" class="headerlink" title="【引言】"></a>【引言】</h2><p>数位dp一直以来是dp家族里比较冷门的一种，但一旦考察不会数位dp靠暴力很难骗到 $O(r-l)$ 以外的分</p>
+<p>今天我们就来分析一下数位dp的全过程</p>
+<h2 id="【引入】"><a href="#【引入】" class="headerlink" title="【引入】"></a>【引入】</h2><p>首先我们要清楚数位dp解决的是什么问题： </p>
+<p><strong>求出在给定区间 $[A,B]$ 内，符合条件 $f(i)$ 的数 $i$ 的个数。条件 $f(i)$ 一般与数的大小无关，而与数的组成有关</strong></p>
+<p>由于数是按位dp，<strong>数的大小对复杂度的影响很小</strong></p>
+<h2 id="【设计搜索】"><a href="#【设计搜索】" class="headerlink" title="【设计搜索】"></a>【设计搜索】</h2><p>这里我们使用<strong>记忆化搜索</strong>实现数位dp。本质上记搜其实就是dp，下文会重点介绍dp值的使用和记录</p>
+<h3 id="一、记搜过程"><a href="#一、记搜过程" class="headerlink" title="一、记搜过程"></a>一、记搜过程</h3><p>从起点向下搜索，到最底层得到方案数，一层一层向上返回答案并累加，最后从搜索起点得到最终答案。</p>
+<p>对于$[l,r]$区间问题，我们一般把他转化为两次数位dp,即找$[0,r]$和$[0,l-1]$两段，再将结果相减就得到了我们需要的$[l,r]$</p>
+<h3 id="二、状态设计"><a href="#二、状态设计" class="headerlink" title="二、状态设计"></a>二、状态设计</h3><p>如果理解了上述过程，我们需要考虑的就是怎样判断现在在哪一层，怎样判断当前的状态——这就需要我们传进一些参量。</p>
+<p><strong>$\text{dfs}$函数需要哪些参量</strong>？</p>
+<ol>
+<li><p>首先是数位dp基本的量数字位数$pos$，记录答案的$st$，最高位限制$limit$（这个后面会讲）</p>
+</li>
+<li><p>我们还需要一个判断判断前导0的标记$lead$（这个后面也会讲）</p>
+</li>
+<li><p>由于数位dp解决的大多是数字组成问题，所以经常要比较当前位和前一位或前几位的关系（根据题意而定），所以一般在dfs()中也要记录前一位或前几位数$pre$方便比较。</p>
+</li>
+<li><p>除此之外还可以传进更多参量以区分状态，视题意而定。</p>
+</li>
+</ol>
+<p>数位dp的状态能记录的最好都记录上  ——lwz dalao</p>
+<h2 id="【细节分析】"><a href="#【细节分析】" class="headerlink" title="【细节分析】"></a>【细节分析】</h2><h3 id="一、前导0标记-text-lead"><a href="#一、前导0标记-text-lead" class="headerlink" title="一、前导0标记$\text{lead}$"></a>一、前导0标记$\text{lead}$</h3><p>由于我们要搜的数可能很长，所以我们的直接最高位搜起</p>
+<p>举个例子：假如我们要从$[0,1000]$找任意相邻两数相等的数</p>
+<p>显然$111,222,888$等等是符合题意的数</p>
+<p>但是我们发现右端点$1000$是四位数</p>
+<p>因此我们搜索的起点是$0000$，而三位数的记录都是$0111,0222,0888$等等</p>
+<p>而这种情况下如果我们直接找相邻位相等则$0000$符合题意而$0111,0222,0888$都不符合题意了</p>
+<p>所以我们要加一个前导0标记</p>
+<ol>
+<li>如果当前位$lead&#x3D;1$而且当前位也是0，那么当前位也是前导0，$pos+1$继续搜；</li>
+<li>如果当前位$lead&#x3D;1$但当前位不是0，则本位作为当前数的最高位，$pos+1$继续搜；（注意这次根据题意st或其他参数可能发生变化）</li>
+</ol>
+<p>当然前导$0$有时候是不需要判断的，上述的例子是一个有关数字结构上的性质，0会影响数字的结构，所以必须判断前导0；而如果我们研究的是数字的组成（例如这个数字有多少个$1$之类的问题），0并不影响我们的判断，这样就不需要前导0标记了。总之，这个因题而异，并不是必须要标记（当然记了肯定是不会出错的）</p>
+<h3 id="二、最高位标记-text-limit"><a href="#二、最高位标记-text-limit" class="headerlink" title="二、最高位标记$\text{limit}$"></a>二、最高位标记$\text{limit}$</h3><p>我们知道在搜索的数位搜索范围可能发生变化；</p>
+<p>举个例子：我们在搜索$[0,555]$的数时，显然最高位搜索范围是$0$~$5$，而后面的位数的取值范围会根据上一位发生变化：</p>
+<ol>
+<li>当最高位是$1$~$4$时，第二位取值为$[0,9]$;</li>
+<li>当最高位是$5$时，第二位取值为$[0,5]$（再往上取就超出右端点范围了）</li>
+</ol>
+<p>为了分清这两种情况，我们引入了$\text{limit}$标记：</p>
+<ol>
+<li>若当前位$limit&#x3D;1$而且已经取到了能取到的最高位时，下一位$limit&#x3D;1$；</li>
+<li>若当前位$limit&#x3D;1$但是没有取到能取到的最高位时，下一位$limit&#x3D;0$；</li>
+<li>若当前位$limit&#x3D;0$时，下一位$limit&#x3D;0$。</li>
+</ol>
+<p>我们设这一位的标记为$limit$，这一位能取到的最大值为$res$，则下一位的标记就是$i&#x3D;&#x3D;res$&amp;&amp;$limit$（$i$枚举这一位填的数）</p>
+<h3 id="三、-text-dp-值的记录和使用"><a href="#三、-text-dp-值的记录和使用" class="headerlink" title="三、$\text{dp}$值的记录和使用"></a>三、$\text{dp}$值的记录和使用</h3><p>最后我们考虑dp数组下标记录的值</p>
+<p>本文介绍数位dp是在<strong>记忆化搜索</strong>的框架下进行的，每当找到一种情况我们就可以这种情况记录下来，等到搜到后面遇到相同的情况时直接使用当前记录的值。</p>
+<p>dp数组的<strong>下标</strong>表示的是<strong>一种状态</strong>，只要<strong>当前的状态和之前搜过的某个状态完全一样</strong>，我们就可以直接返回原来已经记录下来的dp值。</p>
+<p>再举个例子</p>
+<p>假如我们找$[0,123456]$中符合某些条件的数</p>
+<p>假如当我们搜到$1000??$时，dfs从下返上来的数值就是<strong>当前位是第$5$位，前一位是$0$时的方案种数</strong>，搜完这位会向上反，这是我们可以记录一下：当前位第$5$位，前一位是$0$时，有这么多种方案种数</p>
+<p>当我们继续搜到$1010??$时，我们发现当前状态又是搜到了第$5$位，并且上一位也是$0$，这与我们之前记录的情况相同，这样我们就可以不继续向下搜，直接把上次的dp值返回就行了。</p>
+<p>注意，我们返回的dp值必须和当前<strong>处于完全一样的状态</strong>，这就是为什么dp数组下标要记录$pos,pre$等参量了。</p>
+<p>最重要的来了————————————————————</p>
+<p>接着上面的例子，范围$[0,123456]$</p>
+<p>如果我们搜到了$1234??$，我们能不能直接返回之前记录的：当前第$5$位，前一位是$4$时的dp值？</p>
+<p>答案是否定的</p>
+<p>我们发现，这个状态的dp值被记录时，当前位也就是第$5$位的取值是$[0,9]$，而这次当前位的取值是$[0,5]$，方案数一定比之前记录的dp值要小。</p>
+<p>当前位的取值范围为什么会和原来不一样呢？</p>
+<p>如果你联想到了之前所讲的知识，你会发现：现在的$limit&#x3D;1$，最高位有取值的限制。</p>
+<p>因此我们可以得到一个结论：<strong>当$limit&#x3D;1$时，不能记录和取用dp值！</strong></p>
+<p>类似上述的分析过程，我们也可以得出：<strong>当$lead&#x3D;1$时，也不能记录和取用dp值！</strong></p>
+<p>p.s.<del>当然没有这么绝对的说……因题而异的说……</del></p>
+<p>以上就是计划搜索的完整步骤。</p>
+<p>附图：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/pic/37265.png"></p>
+<h2 id="【模板】"><a href="#【模板】" class="headerlink" title="【模板】"></a>【模板】</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ll <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> pos<span class="token punctuation">,</span><span class="token keyword">int</span> pre<span class="token punctuation">,</span><span class="token keyword">int</span> st<span class="token punctuation">,</span>……<span class="token punctuation">,</span><span class="token keyword">int</span> lead<span class="token punctuation">,</span><span class="token keyword">int</span> limit<span class="token punctuation">)</span><span class="token comment">//记搜</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>pos<span class="token operator">></span>len<span class="token punctuation">)</span> <span class="token keyword">return</span> st<span class="token punctuation">;</span><span class="token comment">//剪枝</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">[</span>pre<span class="token punctuation">]</span><span class="token punctuation">[</span>st<span class="token punctuation">]</span>……<span class="token punctuation">[</span>……<span class="token punctuation">]</span><span class="token operator">!=</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span>limit<span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span>lead<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> dp<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">[</span>pre<span class="token punctuation">]</span><span class="token punctuation">[</span>st<span class="token punctuation">]</span>……<span class="token punctuation">[</span>……<span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//记录当前值</span>
+    ll ret<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span><span class="token comment">//暂时记录当前方案数</span>
+    <span class="token keyword">int</span> res<span class="token operator">=</span>limit<span class="token operator">?</span>a<span class="token punctuation">[</span>len<span class="token operator">-</span>pos<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token number">9</span><span class="token punctuation">;</span><span class="token comment">//res当前位能取到的最大值</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>res<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">//有前导0并且当前位也是前导0</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">!</span>i<span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span>lead<span class="token punctuation">)</span> ret<span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>……<span class="token punctuation">,</span>……<span class="token punctuation">,</span>……<span class="token punctuation">,</span>i<span class="token operator">==</span>res<span class="token operator">&amp;&amp;</span>limit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//有前导0但当前位不是前导0，当前位就是最高位</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&amp;&amp;</span>lead<span class="token punctuation">)</span> ret<span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>……<span class="token punctuation">,</span>……<span class="token punctuation">,</span>……<span class="token punctuation">,</span>i<span class="token operator">==</span>res<span class="token operator">&amp;&amp;</span>limit<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>根据题意而定的判断<span class="token punctuation">)</span> ret<span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>……<span class="token punctuation">,</span>……<span class="token punctuation">,</span>……<span class="token punctuation">,</span>i<span class="token operator">==</span>res<span class="token operator">&amp;&amp;</span>limit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>limit<span class="token operator">&amp;&amp;</span><span class="token operator">!</span>lead<span class="token punctuation">)</span> dp<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">[</span>pre<span class="token punctuation">]</span><span class="token punctuation">[</span>st<span class="token punctuation">]</span>……<span class="token punctuation">[</span>……<span class="token punctuation">]</span><span class="token operator">=</span>ret<span class="token punctuation">;</span><span class="token comment">//当前状态方案数记录</span>
+    <span class="token keyword">return</span> ret<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+ll <span class="token function">part</span><span class="token punctuation">(</span>ll x<span class="token punctuation">)</span><span class="token comment">//把数按位拆分</span>
+<span class="token punctuation">&#123;</span>
+    len<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> a<span class="token punctuation">[</span><span class="token operator">++</span>len<span class="token punctuation">]</span><span class="token operator">=</span>x<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">,</span>x<span class="token operator">/=</span><span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span>dp<span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span> dp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//初始化-1（因为有可能某些情况下的方案数是0）</span>
+    <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span>……<span class="token punctuation">,</span>……<span class="token punctuation">,</span>……<span class="token punctuation">,</span>……<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//进入记搜</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>T<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>T<span class="token operator">--</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld%lld"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>l<span class="token punctuation">,</span><span class="token operator">&amp;</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld"</span><span class="token punctuation">,</span><span class="token function">part</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">part</span><span class="token punctuation">(</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//[l,r](l!=0)</span>
+        <span class="token keyword">else</span> <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld"</span><span class="token punctuation">,</span><span class="token function">part</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">part</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//从0开始要特判</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="【例题详解】"><a href="#【例题详解】" class="headerlink" title="【例题详解】"></a>【例题详解】</h2><p> <em>注： 推荐此题的原因是这道题涉及到的需要记录的量较多，比较典型，如果觉得比较难理解也没关系，先看下面的例题推荐</em> </p>
+<p>【题意简述】</p>
+<p>定义一个正整数的价值是把这个数的十进制写出来之后，最长的等差子串的长度。</p>
+<p>求$[l,r]$范围内数字价值的总和。</p>
+<p>【分析】</p>
+<p>这道题很显然是一道数位dp，那么我们应该怎么样设计状态和转移呢？</p>
+<p>数位位置，前一位数，等差数列共差是一定要记录的</p>
+<p>我们还要把当前最大价值和整个数最大值也作为状态</p>
+<p>dp过程见代码注释（数位dp主要还是套板子呀）</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">long</span> ll<span class="token punctuation">;</span>
+<span class="token keyword">int</span> T<span class="token punctuation">,</span>n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>len<span class="token punctuation">,</span>a<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+ll l<span class="token punctuation">,</span>r<span class="token punctuation">,</span>dp<span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">15</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">25</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">20</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+ll <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token keyword">int</span> pos<span class="token punctuation">,</span><span class="token keyword">int</span> pre<span class="token punctuation">,</span>ll st<span class="token punctuation">,</span>ll sum<span class="token punctuation">,</span><span class="token keyword">int</span> d<span class="token punctuation">,</span><span class="token keyword">int</span> lead<span class="token punctuation">,</span><span class="token keyword">int</span> limit<span class="token punctuation">)</span>
+<span class="token comment">//pos搜到的位置</span>
+<span class="token comment">//pre前一位数</span>
+<span class="token comment">//st当前公差最大差值</span>
+<span class="token comment">//sum整个数字的最大价值</span>
+<span class="token comment">//d共差</span>
+<span class="token comment">//lead判断是否有前导0</span>
+<span class="token comment">//limit判断是否有最高位限制</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>pos<span class="token operator">></span>len<span class="token punctuation">)</span> <span class="token keyword">return</span> sum<span class="token punctuation">;</span><span class="token comment">//dp结束 </span>
+    <span class="token comment">//记录状态（计划搜索）</span>
+    <span class="token comment">//注意d有负数，最小可以到-9，所以记录时数组下标是d+10 </span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">[</span>pre<span class="token punctuation">]</span><span class="token punctuation">[</span>st<span class="token punctuation">]</span><span class="token punctuation">[</span>sum<span class="token punctuation">]</span><span class="token punctuation">[</span>d<span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token operator">!=</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span>limit<span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span><span class="token operator">!</span>lead<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> dp<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">[</span>pre<span class="token punctuation">]</span><span class="token punctuation">[</span>st<span class="token punctuation">]</span><span class="token punctuation">[</span>sum<span class="token punctuation">]</span><span class="token punctuation">[</span>d<span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span> 
+    ll ret<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> res<span class="token operator">=</span>limit<span class="token operator">?</span>a<span class="token punctuation">[</span>len<span class="token operator">-</span>pos<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">:</span><span class="token number">9</span><span class="token punctuation">;</span><span class="token comment">//最高位最大值 </span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>res<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token comment">//有前导0且这位也是前导0，一切不变只有位数变化 </span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">!</span>i<span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span>lead<span class="token punctuation">)</span> ret<span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>pos<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span>limit<span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span>i<span class="token operator">==</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//有前导0但这位不是前导0（这位是数字的最高位）开始有前一位，一个数形成等差数列 </span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">&amp;&amp;</span>lead<span class="token punctuation">)</span> ret<span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>pos<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>limit<span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span>i<span class="token operator">==</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//之前刚搜到1位还没有共差，两位数形成等差数列，记录共差 </span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>d<span class="token operator">&lt;</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">)</span> ret<span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>pos<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token number">2ll</span><span class="token punctuation">,</span><span class="token number">2ll</span><span class="token punctuation">,</span>i<span class="token operator">-</span>pre<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>limit<span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span>i<span class="token operator">==</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//搜到2位以后，共差若与前两位相同当前等差数列长度增加，若公差变化则更新整个数字的最大价值，等差数列长度又变为2 </span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>d<span class="token operator">>=</span><span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">)</span> ret<span class="token operator">+=</span><span class="token function">dfs</span><span class="token punctuation">(</span>pos<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>i<span class="token punctuation">,</span><span class="token punctuation">(</span>i<span class="token operator">-</span>pre<span class="token operator">==</span>d<span class="token punctuation">)</span><span class="token operator">?</span>st<span class="token operator">+</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token function">max</span><span class="token punctuation">(</span>sum<span class="token punctuation">,</span><span class="token punctuation">(</span>i<span class="token operator">-</span>pre<span class="token operator">==</span>d<span class="token punctuation">)</span><span class="token operator">?</span>st<span class="token operator">+</span><span class="token number">1</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token punctuation">(</span>i<span class="token operator">-</span>pre<span class="token operator">==</span>d<span class="token punctuation">)</span><span class="token operator">?</span>d<span class="token operator">:</span>i<span class="token operator">-</span>pre<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span>limit<span class="token operator">&amp;&amp;</span><span class="token punctuation">(</span>i<span class="token operator">==</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">//没有前导0和最高限制时可以直接记录当前dp值以便下次搜到同样的情况可以直接使用。 </span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">!</span>limit<span class="token operator">&amp;&amp;</span><span class="token operator">!</span>lead<span class="token punctuation">)</span><span class="token operator">?</span>dp<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">[</span>pre<span class="token punctuation">]</span><span class="token punctuation">[</span>st<span class="token punctuation">]</span><span class="token punctuation">[</span>sum<span class="token punctuation">]</span><span class="token punctuation">[</span>d<span class="token operator">+</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token operator">=</span>ret<span class="token operator">:</span>ret<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+ll <span class="token function">part</span><span class="token punctuation">(</span>ll x<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    len<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> a<span class="token punctuation">[</span><span class="token operator">++</span>len<span class="token punctuation">]</span><span class="token operator">=</span>x<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">,</span>x<span class="token operator">/=</span><span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span>dp<span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span> dp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">dfs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">38</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//-38是随便赋的其实赋成-10就行了…… </span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>T<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>T<span class="token operator">--</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lld%lld"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>l<span class="token punctuation">,</span><span class="token operator">&amp;</span>r<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//l是0的时候要特别注意！</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%lld\n"</span><span class="token punctuation">,</span>l<span class="token operator">?</span><span class="token punctuation">(</span><span class="token function">part</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">part</span><span class="token punctuation">(</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">:</span><span class="token punctuation">(</span><span class="token function">part</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span><span class="token operator">-</span><span class="token function">part</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="【题目推荐】"><a href="#【题目推荐】" class="headerlink" title="【题目推荐】"></a>【题目推荐】</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="http://acm.hdu.edu.cn/showproblem.php?pid=2089">[HDU2089]不要62</a>  </p>
+<p>入门题，如果上面的例题没看懂可以先尝试一下这道题，如果上面的例题理解了这题可以秒切</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P2657">P2657 [SCOI2009]windy数</a>  </p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P2602">P2602 [ZJOI2010]数字计数</a></p>
+<p>这两题是数位dp题目里的基础题，多体会上述的讲解就能够顺利地想出解法<del>（实在不行还可以背板子的吧）</del></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P3413">P3413 萌数</a></p>
+<p>这道题是笔者接触数位dp的第一题，当时学长讲完之后还有点懵，现在发现不是特别难的题目，还是比较套路的</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4127">P4127 [AHOI2009]同类分布</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P4317">P4317 花神的数论题</a></p>
+<p>相比前面，这道题就显得灵活一些，可能在统计答案的方法上有一些变化，但相信当你做完上面的题之后，这两道题也不在话下！</p>
+</li>
+</ul>
+<p>当然也有些题看起来不是数位dp，但是可能依靠一些数论知识把问题转化成一道数位dp题（比如一些<strong>数字本身的性质</strong>转化成<strong>数字组成的特点</strong>），这里就不再过多赘述。</p>
+<h2 id="【后记】"><a href="#【后记】" class="headerlink" title="【后记】"></a>【后记】</h2><p>数位dp虽然大多在套模板，但是里面的判断和细节还是很多的，多写几道数位dp之后才能发现其中的规律，完全将其掌握。</p>
+<h2 id="【特别鸣谢】"><a href="#【特别鸣谢】" class="headerlink" title="【特别鸣谢】"></a>【特别鸣谢】</h2><p>本文是笔者听过了两位dalao的讲解后撰写而成</p>
+<p>初识数位dp：学长Vergil 【<a target="_blank" rel="noopener" href="https://www.luogu.org/space/show?uid=12736">LVYOUYW</a>】</p>
+<p>知识巩固：dalao lwz 【<a target="_blank" rel="noopener" href="https://www.luogu.org/space/show?uid=75010">lwz2002</a>】</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Mathison2020</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://Mathison2020.github.io/2022/11/10/001/">http://Mathison2020.github.io/2022/11/10/001/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Mathison2020</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/dp/">
+                                    <span class="chip bg-color">dp</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                                    <span class="chip bg-color">数学</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+    <div class="livere-card card" data-aos="fade-up">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" class="card-content" data-id="city" data-uid="MTAyMC81NzYwNC8zNDA2OA==">
+        <script type="text/javascript">
+            (function (d, s) {
+                let j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') {
+                    return;
+                }
+
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript。</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</div>
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/11/11/MCExp1/">
+                    <div class="card-image">
+                        
+                        <img src="https://s2.loli.net/2022/11/11/IqVHzLn4RSis9Xk.jpg" class="responsive-img" alt="实验一 8255并行接口实验">
+                        
+                        <span class="card-title">实验一 8255并行接口实验</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-11-11
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%BE%AE%E6%9C%BA%E5%AE%9E%E9%AA%8C/" class="post-category">
+                                    微机实验
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%BE%AE%E6%9C%BA%E5%AE%9E%E9%AA%8C/">
+                        <span class="chip bg-color">微机实验</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/11/10/001/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="数字组成的奥妙——数位dp">
+                        
+                        <span class="card-title">数字组成的奥妙——数位dp</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/dp/">
+                        <span class="chip bg-color">dp</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E5%AD%A6/">
+                        <span class="chip bg-color">数学</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('120')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: Mathison&#39;s Blog<br />'
+            + '文章作者: Mathison2020<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022-2023</span>
+            
+            <span id="year">2022</span>
+            <a href="/about" target="_blank">Mathison2020</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Mathison2020" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1664086968@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1664086968" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1664086968" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+    <script type="text/javascript" src="/libs/background/ribbon-dynamic.js" async="async"></script>
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
