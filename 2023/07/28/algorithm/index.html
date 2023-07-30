@@ -1694,7 +1694,7 @@ ll <span class="token function">inv</span><span class="token punctuation">(</spa
 <p>$$ax+by&#x3D;gcd(a,b)&#x3D;gcd(b,a%b)&#x3D;bx’+(a%b)y’$$</p>
 <p>$$ax+by&#x3D;bx’+(a-b*\lfloor a&#x2F;b\rfloor)y’$$</p>
 <p>$$ax+by&#x3D;ay’+b(x’-\lfloor a&#x2F;b\rfloor)y’$$</p>
-<p>可得：$$\left{ \begin{array}{ll} x&#x3D;y’\y&#x3D;x’-\lfloor a&#x2F;b\rfloor \end{array}\right.$$</p>
+<p>可得：$$\begin{cases} x&#x3D;y’\y&#x3D;x’-\lfloor a&#x2F;b\rfloor \end{cases}$$</p>
 </li>
 </ul>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ll <span class="token function">exgcd</span><span class="token punctuation">(</span>ll a<span class="token punctuation">,</span> ll b<span class="token punctuation">,</span> ll <span class="token operator">&amp;</span>x<span class="token punctuation">,</span> ll <span class="token operator">&amp;</span>y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
