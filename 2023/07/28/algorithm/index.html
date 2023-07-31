@@ -823,11 +823,16 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 
 
 
-<h3 id="1-10-快速幂"><a href="#1-10-快速幂" class="headerlink" title="1.10 快速幂"></a>1.10 快速幂</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ll <span class="token function">ksm</span><span class="token punctuation">(</span>ll a<span class="token punctuation">,</span>ll k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<h3 id="1-10-快速乘-快速幂"><a href="#1-10-快速乘-快速幂" class="headerlink" title="1.10 快速乘 快速幂"></a>1.10 快速乘 快速幂</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ll <span class="token function">ksc</span><span class="token punctuation">(</span>ll a<span class="token punctuation">,</span>ll k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 快速乘</span>
+    ll ret<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span>k<span class="token punctuation">;</span><span class="token punctuation">(</span>a<span class="token operator">&lt;&lt;=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%=</span>mod<span class="token punctuation">,</span>k<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">if</span><span class="token punctuation">(</span>k<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>ret<span class="token operator">+=</span>a<span class="token punctuation">)</span><span class="token operator">%=</span>mod<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> ret<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+ll <span class="token function">ksm</span><span class="token punctuation">(</span>ll a<span class="token punctuation">,</span>ll k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>	<span class="token comment">// 快速幂</span>
     ll ret<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span>k<span class="token punctuation">;</span><span class="token punctuation">(</span>a<span class="token operator">*=</span>a<span class="token punctuation">)</span><span class="token operator">%=</span>mod<span class="token punctuation">,</span>k<span class="token operator">>>=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">if</span><span class="token punctuation">(</span>k<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>ret<span class="token operator">*=</span>a<span class="token punctuation">)</span><span class="token operator">%=</span>mod<span class="token punctuation">;</span>
     <span class="token keyword">return</span> ret<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -2224,7 +2229,7 @@ map<span class="token operator">&lt;</span><span class="token keyword">int</span
 
 
 
-
+<h2 id="7-动态规划（dp）"><a href="#7-动态规划（dp）" class="headerlink" title="7 动态规划（dp）"></a>7 动态规划（dp）</h2>
                 
             </div>
             <hr/>
