@@ -763,7 +763,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">int</s
 
 <h3 id="1-7-高精度"><a href="#1-7-高精度" class="headerlink" title="1.7 高精度"></a>1.7 高精度</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/virus2017/post-gao-jing-du-ji-suan-gao-jing-du-mu-ban-tai-quan">高精度运算合集</a></p>
 <h3 id="1-8-KMP"><a href="#1-8-KMP" class="headerlink" title="1.8 KMP"></a>1.8 KMP</h3><ul>
-<li>nxt数组的含义：**<code>nxt[i]</code> 表示 <code>b[0~i-1]</code> 最长公共前后缀长度（不包括本身）**</li>
+<li>nxt数组的含义：<code>nxt[i]</code> 表示 <code>b[0~i-1]</code> <strong>最长公共前后缀</strong>长度（不包括本身）</li>
 </ul>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">char</span> a<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span>b<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//b[]为模式串</span>
 <span class="token keyword">int</span> lena<span class="token punctuation">,</span>lenb<span class="token punctuation">,</span>nxt<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -967,7 +967,7 @@ s<span class="token punctuation">.</span><span class="token function">push</span
 <p>【例】接雨水</p>
 <p>给定 $n$ 个非负整数表示每个宽度为 $1$ 的柱子的高度图。</p>
 <p>计算按此排列的柱子，下雨之后能接多少雨水。</p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/rainwatertrap.png" alt="img"></p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/22/rainwatertrap.png" alt="接雨水-示意图"></p>
 <ul>
 <li>法一：单调栈</li>
 </ul>
@@ -1127,7 +1127,7 @@ q<span class="token punctuation">.</span><span class="token function">size</span
 q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 队头出队</span>
 <span class="token generic-function"><span class="token function">priority_queue</span><span class="token generic class-name"><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">swap</span><span class="token punctuation">(</span>q<span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// q.clear()</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>应用详见 [2.5.2 STL priority_queue](#2.5.2 STL priority_queue)</p>
+<p>应用详见 <strong>2.5.2 STL priority_queue</strong></p>
 <h3 id="2-5-堆"><a href="#2-5-堆" class="headerlink" title="2.5 堆"></a>2.5 堆</h3><h4 id="2-5-1-模拟堆"><a href="#2-5-1-模拟堆" class="headerlink" title="2.5.1 模拟堆"></a>2.5.1 模拟堆</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// h[N]存储堆中的值, h[1]是堆顶</span>
 <span class="token keyword">int</span> h<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">,</span>tot<span class="token punctuation">;</span>
 <span class="token keyword">void</span> <span class="token function">down</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>	<span class="token comment">// 下沉</span>
@@ -1159,7 +1159,7 @@ q<span class="token punctuation">.</span><span class="token function">pop</span>
 <span class="token punctuation">&#125;</span>
 <span class="token keyword">void</span> <span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> tot<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="2-5-2-STL-priority-queue"><a href="#2-5-2-STL-priority-queue" class="headerlink" title="2.5.2 STL priority_queue"></a>2.5.2 STL priority_queue</h4><p>详细定义见[2.4.4 优先队列](#2.4.4 优先队列)</p>
+<h4 id="2-5-2-STL-priority-queue"><a href="#2-5-2-STL-priority-queue" class="headerlink" title="2.5.2 STL priority_queue"></a>2.5.2 STL priority_queue</h4><p>详细定义见 <strong>2.4.4 优先队列</strong></p>
 <p>应用：堆排序，Dijkstra，Prim</p>
 <h4 id="2-5-3-堆排序"><a href="#2-5-3-堆排序" class="headerlink" title="2.5.3 堆排序"></a>2.5.3 堆排序</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -1828,13 +1828,13 @@ queue<span class="token operator">&lt;</span>pair<span class="token operator">&l
 <p>因此 <strong>$x$ 的因数个数为 $\prod_i{(k_i+1)}$</strong></p>
 <h4 id="5-2-3-约数之和"><a href="#5-2-3-约数之和" class="headerlink" title="5.2.3 约数之和"></a>5.2.3 约数之和</h4><p>若 $$N&#x3D;\prod_{i}{p_i^{c_i}}$$<br>约数个数：$$\prod_{i}{(c_i+1)}$$<br>约数之和：$$\prod_{i}{\sum_{j&#x3D;0}^{c_i}{p_i^j}}&#x3D;\prod_i{\frac{p_i^{c_i+1}-1}{p_i-1}}$$</p>
 <h3 id="5-3-逆元"><a href="#5-3-逆元" class="headerlink" title="5.3 逆元"></a>5.3 逆元</h3><p><a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/virus2017/post-ni-yuan-ta-zhan-ou-ji-li-dei-shuo-xue-post">逆元公式推导详解</a></p>
-<p>当求解公式：$(a&#x2F;b)%m$ 时，因 $b$ 可能会过大，会出现爆精度的情况，所以需变除法为乘法：</p>
+<p>当求解公式：$(a&#x2F;b)\%m$ 时，因 $b$ 可能会过大，会出现爆精度的情况，所以需变除法为乘法：</p>
 <p>设 $b^{-1}$ 是 $b$ 的逆元，则有 $b*b^{-1}≡1 \mod m$；</p>
-<p>则$(a&#x2F;b)%m&#x3D;(a&#x2F;b)<em>1%m&#x3D;(a&#x2F;b)<em>b</em>b^{-1}%m&#x3D;a</em>b^{-1}\mod m$;</p>
+<p>则$(a&#x2F;b)\%m&#x3D;(a&#x2F;b)<em>1\%m&#x3D;(a&#x2F;b)<em>b</em>b^{-1}\%m&#x3D;a</em>b^{-1}\mod m$;</p>
 <p>即 $a&#x2F;b$ 的模等于 $a*b^{-1}$ 的模；</p>
 <h4 id="5-3-1-费马小定理"><a href="#5-3-1-费马小定理" class="headerlink" title="5.3.1 费马小定理"></a>5.3.1 费马小定理</h4><p>$$<br>a^p≡a\mod p<br>$$</p>
 <p>也写作<br>$$<br>a^{p-1}≡1\mod p<br>$$</p>
-<p>若 $p$ 是素数，且 $inv$ 与 $p$ 互质，则<br>$$<br>inv^{p-1}≡(1%p)<br>$$<br>根据逆元的定义可得<br>$$<br>x*inv≡1\mod p<br>$$<br>得出乘法逆元<br>$$<br>inv&#x3D;x^{p-2}<br>$$</p>
+<p>若 $p$ 是素数，且 $inv$ 与 $p$ 互质，则<br>$$<br>inv^{p-1}≡(1\%p)<br>$$<br>根据逆元的定义可得<br>$$<br>x*inv≡1\mod p<br>$$<br>得出乘法逆元<br>$$<br>inv&#x3D;x^{p-2}<br>$$</p>
 <p>前提：$p$ 是质数</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> mod<span class="token operator">=</span><span class="token number">1e9</span><span class="token operator">+</span><span class="token number">7</span><span class="token punctuation">;</span>
 ll <span class="token function">ksm</span><span class="token punctuation">(</span>ll a<span class="token punctuation">,</span>ll b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -1850,9 +1850,9 @@ ll <span class="token function">inv</span><span class="token punctuation">(</spa
 <ul>
 <li><p>当 $b&#x3D;0$ 时，$gcd(a,b)&#x3D;a$，因此 $x&#x3D;1,y&#x3D;0$</p>
 </li>
-<li><p>当 $b \neq 0$ 时，$gcd(a,b)&#x3D;gcd(b,a%b)$，则</p>
-<p>$$<br>\begin{align}<br>ax+by &amp;&#x3D; gcd(a,b)&#x3D;gcd(b,a%b)&#x3D;bx’+(a%b)y’ \<br>&amp;&#x3D; bx’+(a-b*\lfloor a&#x2F;b\rfloor)y’ \<br>&amp;&#x3D; ay’+b(x’-\lfloor a&#x2F;b\rfloor)y’<br>\end{align}<br>$$</p>
-<p>可得：<br>$$<br>\begin{cases} x&#x3D;y’ \ y&#x3D;x’-\lfloor a&#x2F;b\rfloor \end{cases}<br>$$</p>
+<li><p>当 $b \neq 0$ 时，$gcd(a,b)&#x3D;gcd(b,a\%b)$，则</p>
+<p>$$<br>\begin{align}<br>ax+by &amp;&#x3D; gcd(a,b)&#x3D;gcd(b,a\%b)&#x3D;bx’+(a\%b)y’ \\<br>&amp;&#x3D; bx’+(a-b*\lfloor a&#x2F;b\rfloor)y’ \\<br>&amp;&#x3D; ay’+b(x’-\lfloor a&#x2F;b\rfloor)y’<br>\end{align}<br>$$</p>
+<p>可得：<br>$$<br>\begin{cases} x&#x3D;y’ \\<br>y&#x3D;x’-\lfloor a&#x2F;b\rfloor \end{cases}<br>$$</p>
 </li>
 </ul>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ll <span class="token function">exgcd</span><span class="token punctuation">(</span>ll a<span class="token punctuation">,</span> ll b<span class="token punctuation">,</span> ll <span class="token operator">&amp;</span>x<span class="token punctuation">,</span> ll <span class="token operator">&amp;</span>y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -1870,7 +1870,7 @@ ll <span class="token function">inv</span><span class="token punctuation">(</spa
     <span class="token keyword">return</span> x<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="5-3-3-线性求逆元"><a href="#5-3-3-线性求逆元" class="headerlink" title="5.3.3 线性求逆元"></a>5.3.3 线性求逆元</h4><p>已知一个质数$M$，求出 $1→n$ 中每个数关于模 $M$ 的逆元</p>
-<p>$$<br>inv[i]&#x3D;(M-\lfloor{M&#x2F;i}\rfloor)*inv[M%i]%M<br>$$</p>
+<p>$$<br>inv[i]&#x3D;(M-\lfloor{M&#x2F;i}\rfloor)*inv[M\%i]%M<br>$$</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">init_inv</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span><span class="token keyword">int</span> p<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     inv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -1908,7 +1908,7 @@ ll <span class="token function">C</span><span class="token punctuation">(</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>ll<span class="token punctuation">)</span>fac<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token operator">*</span>inv<span class="token punctuation">[</span>b<span class="token punctuation">]</span><span class="token operator">%</span>mod<span class="token operator">*</span>inv<span class="token punctuation">[</span>a<span class="token operator">-</span>b<span class="token punctuation">]</span><span class="token operator">%</span>mod<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="5-4-3-Lucas定理"><a href="#5-4-3-Lucas定理" class="headerlink" title="5.4.3 Lucas定理"></a>5.4.3 Lucas定理</h4><p>$$<br>C(n,m)&#x3D;C(n&#x2F;p,m&#x2F;p)∗C(n%p,m%p)<br>$$</p>
+<h4 id="5-4-3-Lucas定理"><a href="#5-4-3-Lucas定理" class="headerlink" title="5.4.3 Lucas定理"></a>5.4.3 Lucas定理</h4><p>$$<br>C(n,m)&#x3D;C(n&#x2F;p,m&#x2F;p)∗C(n\%p,m\%p)<br>$$</p>
 <p>适用于 $n,m$ 较大时求组合数</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">ll <span class="token function">ksm</span><span class="token punctuation">(</span>ll a<span class="token punctuation">,</span><span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     ll res<span class="token operator">=</span><span class="token number">1ll</span><span class="token punctuation">;</span>
@@ -1935,7 +1935,7 @@ ll <span class="token function">C</span><span class="token punctuation">(</span>
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="5-4-4-质因数分解法"><a href="#5-4-4-质因数分解法" class="headerlink" title="5.4.4 质因数分解法"></a>5.4.4 质因数分解法</h4><p>$n!$ 中质因数 $p$ 的个数，即统计 $p$ 的出现次数，再统计 $p^2$ 的出现次数，依次类推，即<br>$$<br>\begin{align}<br>\text{cnt}(n,p) &amp;&#x3D;\lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \lfloor \frac{n}{p^3} \rfloor + \cdots \<br>&amp;&#x3D; \lfloor \frac{n}{p} \rfloor + \lfloor \frac{n&#x2F;p}{p} \rfloor + \lfloor \frac{n&#x2F;p^2}{p} \rfloor + \cdots<br>\end{align} \<br>$$</p>
+<h4 id="5-4-4-质因数分解法"><a href="#5-4-4-质因数分解法" class="headerlink" title="5.4.4 质因数分解法"></a>5.4.4 质因数分解法</h4><p>$n!$ 中质因数 $p$ 的个数，即统计 $p$ 的出现次数，再统计 $p^2$ 的出现次数，依次类推，即<br>$$<br>\begin{align}<br>\text{cnt}(n,p) &amp;&#x3D;\lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \lfloor \frac{n}{p^3} \rfloor + \cdots \\<br>&amp;&#x3D; \lfloor \frac{n}{p} \rfloor + \lfloor \frac{n&#x2F;p}{p} \rfloor + \lfloor \frac{n&#x2F;p^2}{p} \rfloor + \cdots<br>\end{align} \\<br>$$</p>
 <p>$$<br>C^b_a&#x3D;\frac{a!}{b!(a−b)!} &#x3D; \prod_i{p_i^{\text{cnt}(a,p_i)-\text{cnt}(b,p_i)-\text{cnt}(a-b,p_i)}}<br>$$</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
