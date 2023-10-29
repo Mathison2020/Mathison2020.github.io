@@ -527,7 +527,7 @@
 <p>另有 $M$ 种颜色的球各 $b$ 个，编号 $1 \to b$ 。</p>
 <p>求选取 $k$ 个不同颜色的球，其中任何编号出现次数都不超过 $s$ 的方案数（结果$\bmod 998244353$） </p>
 <p>$1 \leq N , M , a , b , k \leq 10^3 ,\ \ s\in{1,2}$ 。</p>
-<h4 id="T3-次元波动平衡（surge）"><a href="#T3-次元波动平衡（surge）" class="headerlink" title="T3 次元波动平衡（surge）"></a>T3 次元波动平衡（surge）</h4><p>一个长为 $N$ 的数列 $\left(a_i\right)$，要求选取其中最多 $K$ 个位置减去一个常数 $D$，使得到新的数列 $\left(a^{\prime}<em>i\right)$ 的最大子段和最小，求这个最小值，即<br>$$<br>\min \left( \max</em>{1\leq l\leq r\leq N}\sum_{i&#x3D;l}^r a^{\prime}_i\right)<br>$$<br> $1 \leq K \leq N \leq 5\times 10^5 ,\ \ \  1 \leq D \leq 10^9 ,\ \  −10^9 \leq a_i \leq 10^9$</p>
+<h4 id="T3-次元波动平衡（surge）"><a href="#T3-次元波动平衡（surge）" class="headerlink" title="T3 次元波动平衡（surge）"></a>T3 次元波动平衡（surge）</h4><p>一个长为 $N$ 的数列 $\left(a_i\right)$，要求选取其中最多 $K$ 个位置减去一个常数 $D$，使得到新的数列 $\left(a_i^{\prime}\right)$ 的最大子段和最小，求这个最小值，即<br>$$<br>\min \left( \max_{1\leq l\leq r\leq N}\sum_{i&#x3D;l}^r a^{\prime}_i\right)<br>$$<br> $1 \leq K \leq N \leq 5\times 10^5 ,\ \ \  1 \leq D \leq 10^9 ,\ \  −10^9 \leq a_i \leq 10^9$</p>
 <p>（T4是一道编译系统题；T5是系统实现题，非性能题）</p>
 <p><strong>（题解部分见文末）</strong></p>
 <h3 id="比赛心路历程"><a href="#比赛心路历程" class="headerlink" title="比赛心路历程"></a>比赛心路历程</h3><p>T1第一感觉是贪心，可以直接根据收益大小交换&#x2F;买礼包</p>
