@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="test, Mathison&#39;s Blog">
+    <meta name="keywords" content="CCF CCSP2023游记, Mathison&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>test | Mathison&#39;s Blog</title>
+    <title>CCF CCSP2023游记 | Mathison&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -323,12 +323,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">test</h1>
+                    <h1 class="description center-align post-title">CCF CCSP2023游记</h1>
                 </div>
             </div>
         </div>
@@ -444,8 +444,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/test/">
-                                <span class="chip bg-color">test</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
                     </div>
@@ -456,8 +456,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/test/" class="post-category">
-                                test
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                算法
                             </a>
                         
                     </div>
@@ -469,7 +469,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-29
+                    2023-10-27
                 </div>
                 
 
@@ -493,7 +493,83 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>This is %</p>
+                <h1 id="CCF-CCSP2023游记"><a href="#CCF-CCSP2023游记" class="headerlink" title="CCF CCSP2023游记"></a>CCF CCSP2023游记</h1><p>第八届CCSP全国总决赛 2023年10月25-26日 沈阳</p>
+<h3 id="序"><a href="#序" class="headerlink" title="序"></a>序</h3><blockquote>
+<p>自从5年前11月11日的NOIP2018原地退役之后，没再打过OI了</p>
+<p>上了大学，没有进唐计的机会，转到了计算机之后也已经失去了打ACM的机会</p>
+<p>打了三次CSP认证，编程竞赛打了两届蓝桥杯省赛+国赛，一次水赛（以及两次青云杯）</p>
+<p>多多少少有些出于功利目的，保研加分，综测加分，课外学分……</p>
+<p>总觉得缺了些过去打OI时候的味道</p>
+<p>如今保研事宜尘埃落定，有幸获得了CCSP2023参赛机会</p>
+<p>应该是自NOIP2018后第一次参加官方的程序设计竞赛</p>
+<p>不知能否找回属于OIer的那份热忱</p>
+</blockquote>
+<p>当初报名的时候以为只是一个单纯的算法比赛，仔细看看赛制之后才发现别有洞天</p>
+<p>3算法题+2系统题，12小时超长战线，早9点打到晚9点，<del>IOI赛制的NOIP-黑客松</del></p>
+<blockquote>
+<p>之后得知被选入参赛名单是因为老师觉得大四写系统题会写的好hhh</p>
+<p>不过能和校队ACMer一起比赛已经很荣幸了</p>
+</blockquote>
+<p>由于之前搞软工课设，没拿出太多时间准备，只研究了一道历年系统题&#x2F;性能题，根据性能实时评分还是挺新奇的（虽然青云杯也有）</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><h4 id="T1-装修（decorate）"><a href="#T1-装修（decorate）" class="headerlink" title="T1 装修（decorate）"></a>T1 装修（decorate）</h4><p>有 $M(\leq10^4)$ 种素材 $a_1,a_2,\cdots,a_M$ ，这些素材共分为两种：</p>
+<ul>
+<li>直接素材：可花费 $c_i(\leq10^4)$ 元直接购买</li>
+<li>间接素材：只能用其它素材合成（合成无费用），一种素材最多只能作为一种素材的子素材，且保证不会成环。</li>
+</ul>
+<p>此外，有两种特殊的素材获取方式：</p>
+<ul>
+<li>共有 $P(\leq5)$  个邻居，可用 $s_i$ 换取邻居的 $r_i$ 素材（单向）（交换无费用）</li>
+<li>共有 $Q(\leq5)$ 个礼包，礼包价格为 $w_i$，内含 $k(\leq M)$ 种素材 $g_1,g_2,\cdots,g_k$</li>
+</ul>
+<p>需求为 $N(\leq100)(\leq M)$ 种素材 $b_1,b_2,\cdots,b_N$</p>
+<p>求满足需求的最小花费</p>
+<h4 id="T2-摸球（ball）"><a href="#T2-摸球（ball）" class="headerlink" title="T2 摸球（ball）"></a>T2 摸球（ball）</h4><p>有 $N$ 种颜色的球各 $a$ 个，每种颜色的球编号 $1\to a$。</p>
+<p>另有 $M$ 种颜色的球各 $b$ 个，编号 $1 \to b$ 。</p>
+<p>求选取 $k$ 个不同颜色的球，其中任何编号出现次数都不超过 $s$ 的方案数（结果$\bmod 998244353$） </p>
+<p>$1 \leq N , M , a , b , k \leq 10^3 ,\ \ s\in{1,2}$ 。</p>
+<h4 id="T3-次元波动平衡（surge）"><a href="#T3-次元波动平衡（surge）" class="headerlink" title="T3 次元波动平衡（surge）"></a>T3 次元波动平衡（surge）</h4><p>一个长为 $N$ 的数列 ${a_i}$，要求选取其中最多 $K$ 个位置减去一个常数 $D$，使得到新的数列 ${a’<em>i}$的最大子段和最小，求这个最小值，即<br>$$<br>\min \left( \max</em>{1\leq l\leq r\leq N}\sum_{i&#x3D;l}^r a’_i\right)<br>$$<br> $1 \leq K \leq N \leq 5\times 10^5 ,\ \ \  1 \leq D \leq 10^9 ,\ \  −10^9 \leq a_i \leq 10^9$</p>
+<p>（T4是一道编译系统题；T5是系统实现题，非性能题）</p>
+<p><strong>（题解部分见文末）</strong></p>
+<h3 id="比赛心路历程"><a href="#比赛心路历程" class="headerlink" title="比赛心路历程"></a>比赛心路历程</h3><p>T1第一感觉是贪心，可以直接根据收益大小交换&#x2F;买礼包</p>
+<p>T2感觉正解dp，可以用组合数拿部分分</p>
+<p>T3第一眼单调队列，k个修改似乎要线段树</p>
+<p>T4编译系统题，果断放弃</p>
+<p>T5给好了框架，像是程序填空，似乎是能写的</p>
+<p>先打了T1的贪心，拿了60</p>
+<p>后来换了几种贪法，骗到70，后无果，故搁置</p>
+<p>T2先写了s&#x3D;1的情况，拿到50</p>
+<p>T3没想到什么好方法，暴搜了个10分</p>
+<p>反复看榜，一直在200名左右徘徊</p>
+<p>又回去搞T1，又交了10多发，依然是70……</p>
+<p>打了T2的s&#x3D;2,a&#x3D;b的部分分，拿到60</p>
+<p>午饭时间看T5，好像能搞</p>
+<p>去看T5，题面很长，但是意外地很简单</p>
+<p>下午的时间依次拿下T5的第一二三子任务，拿到70</p>
+<p>最后两小时封榜，当前总分210，银牌线230</p>
+<p>去搞T2的剩下的40分里的10分，一个组合数没想到直接A掉</p>
+<p>忽然意识到T1的P和Q都只有5，1&lt;&lt;10只有1024，这不铁二进制枚举嘛</p>
+<p>迅速重构A掉T1<del>（早干啥去了*1）</del></p>
+<p>最后20分钟发现第三题的“最小化最大值”</p>
+<p>这不铁二分答案嘛<del>（早干啥去了*2）</del></p>
+<p>不过还是没想好怎样check，不断向前减D复杂度是$O\left(n^2\right)$，最多也就20分的样子</p>
+<p>最终定格100+100+10+0+70&#x3D;280分</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>比赛刚结束稍微有些遗憾，感觉摸不到银牌线了。</p>
+<p>不过终归是打完了12h的比赛，本科期间能参加一次这样的比赛，和各校大佬们同场竞技，结果如何已经不重要了。</p>
+<p>赛后和本校的三位佬简单复盘了一下，发现T5的后30分其实很简单，被题面吓退了<del>（早干啥去了*3）</del></p>
+<blockquote>
+<p>上次感受这种氛围还是在高二OI机房里听佬们讨论题，颇为感慨</p>
+</blockquote>
+<p>感觉赛中思路有些混乱，有些本来静下心来很容易想到的东西没有迅速反应到，反倒是比赛最终时刻出现了可观的思路，赛中还是心不够静，而且缺少“一定要把这题A掉”的决心。</p>
+<p>第二天上午拿着CNCC参会证白嫖地铁票白嫖景点门票hhh</p>
+<p>下午CCSP颁奖典礼，银线刚刚好280，惊险收获银牌（总算是没有重蹈NOIP2018的覆辙）</p>
+<p>当然，也再次深刻地感受到了和佬们思维上 <del>和格局上</del> 的差距。</p>
+<p>差距归差距，尽全力发挥到最好，战胜过去的自己，已经很满足了。</p>
+<p>不虚此行，也算是为OI生涯画上圆满的句号了。</p>
+<p>（emmmmm说不定 大四下天梯赛还去凑热闹？</p>
+<p>Mathison 编辑 于2023年10月27日</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>佬，您还真的翻到这里想看我的题解嘛？</p>
+<p>我这么菜就算了叭</p>
+<p>请移步我的大神队友 <a target="_blank" rel="noopener" href="https://blog.csdn.net/Maxwei_wzj/article/details/134045716">韦神的博客</a> 叭</p>
 
                 
             </div>
@@ -520,7 +596,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://Mathison2020.github.io/2023/07/29/test/">http://Mathison2020.github.io/2023/07/29/test/</a>
+                    <a href="http://Mathison2020.github.io/2023/10/27/CCF%20CCSP2023%E6%B8%B8%E8%AE%B0/">http://Mathison2020.github.io/2023/10/27/CCF%20CCSP2023%E6%B8%B8%E8%AE%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -558,8 +634,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/test/">
-                                    <span class="chip bg-color">test</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
                         </div>
@@ -751,9 +827,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/10/27/CCF%20CCSP2023%E6%B8%B8%E8%AE%B0/">
                     <div class="card-image">
@@ -771,9 +848,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -786,6 +863,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -804,13 +882,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/28/algorithm/">
+                <a href="/2023/07/29/test/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="基础算法模版">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
                         
-                        <span class="card-title">基础算法模版</span>
+                        <span class="card-title">test</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -821,14 +899,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-29
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                    算法
+                            <a href="/categories/test/" class="post-category">
+                                    test
                                 </a>
                             
                             
@@ -838,12 +916,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%A8%A1%E6%9D%BF/">
-                        <span class="chip bg-color">模板</span>
+                    <a href="/tags/test/">
+                        <span class="chip bg-color">test</span>
                     </a>
                     
                 </div>
