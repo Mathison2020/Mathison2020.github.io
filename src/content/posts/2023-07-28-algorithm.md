@@ -1580,19 +1580,19 @@ int lcm(int x,int y) {return (ll)x*y/gcd(x,y);}
 
 [逆元公式推导详解](https://www.luogu.com.cn/blog/virus2017/post-ni-yuan-ta-zhan-ou-ji-li-dei-shuo-xue-post)
 
-当求解公式：$(a/b)\%m$ 时，因 $b$ 可能会过大，会出现爆精度的情况，所以需变除法为乘法：
+当求解公式：$(a/b)\bmod m$ 时，因 $b$ 可能会过大，会出现爆精度的情况，所以需变除法为乘法：
 
-设 $b^{-1}$ 是 $b$ 的逆元，则有 $b*b^{-1}≡1 \mod m$；
+设 $b^{-1}$ 是 $b$ 的逆元，则有 $b\cdot b^{-1}\equiv1\pmod m$；
 
 则  
 $$  
 \begin{align}  
-(a/b) &=(a/b)_1 \\\\  
-&=(a/b)_b_b^{-1} \\\\  
-&=a_b^{-1}\mod m  
+(a/b) &\equiv (a/b)\cdot 1 \pmod m \\\\  
+&\equiv (a/b)\cdot b\cdot b^{-1} \pmod m \\\\  
+&\equiv a\cdot b^{-1} \pmod m  
 \end{align}  
 $$  
-即 $a/b$ 的模等于 $a*b^{-1}$ 的模；
+即 $a/b$ 的模等于 $a\cdot b^{-1}$ 的模；
 
 #### 5.3.1 费马小定理
 
