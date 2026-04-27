@@ -5,6 +5,7 @@ import * as cheerio from "cheerio";
 import TurndownService from "turndown";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const sourceRoot = fs.existsSync(path.join(root, "legacy")) ? path.join(root, "legacy") : root;
 const blogDir = path.join(root, "src", "content", "blog");
 const dataDir = path.join(root, "src", "data");
 
@@ -75,11 +76,11 @@ function normalizeArticleHtml($, article) {
 function assetExists(src) {
   if (!src || /^https?:\/\//.test(src)) return Boolean(src);
   if (src.startsWith("/medias/")) return false;
-  return fs.existsSync(path.join(root, src.replace(/^\//, "")));
+  return fs.existsSync(path.join(sourceRoot, src.replace(/^\//, "")));
 }
 
 function extractHomepageCovers() {
-  const filePath = path.join(root, "index.html");
+  const filePath = path.join(sourceRoot, "index.html");
   if (!fs.existsSync(filePath)) return new Map();
 
   const $ = cheerio.load(fs.readFileSync(filePath, "utf8"), { decodeEntities: true });
@@ -94,7 +95,7 @@ function extractHomepageCovers() {
 }
 
 function extractPost(filePath) {
-  const relative = path.relative(root, filePath);
+  const relative = path.relative(sourceRoot, filePath);
   const match = relative.match(postPathPattern);
   if (!match) return null;
 
@@ -122,7 +123,6 @@ function extractPost(filePath) {
     pubDate,
     category,
     tags,
-    oldPath,
     cover,
     description: summary,
     markdown,
@@ -130,7 +130,7 @@ function extractPost(filePath) {
 }
 
 function extractFriends() {
-  const filePath = path.join(root, "friends", "index.html");
+  const filePath = path.join(sourceRoot, "friends", "index.html");
   if (!fs.existsSync(filePath)) return [];
 
   const $ = cheerio.load(fs.readFileSync(filePath, "utf8"), { decodeEntities: true });
@@ -156,7 +156,6 @@ function writePost(post) {
     `pubDate: ${post.pubDate}`,
     `category: ${yamlString(post.category)}`,
     `tags: ${yamlArray(post.tags)}`,
-    `oldPath: ${yamlString(post.oldPath)}`,
     `cover: ${yamlString(post.cover)}`,
     `description: ${yamlString(post.description)}`,
     "---",
@@ -170,7 +169,7 @@ fs.rmSync(blogDir, { recursive: true, force: true });
 fs.mkdirSync(blogDir, { recursive: true });
 fs.mkdirSync(dataDir, { recursive: true });
 
-const posts = walk(root)
+const posts = walk(sourceRoot)
   .map(extractPost)
   .filter(Boolean)
   .sort((a, b) => b.pubDate.localeCompare(a.pubDate) || a.title.localeCompare(b.title));

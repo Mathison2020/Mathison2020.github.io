@@ -1,23 +1,26 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { getPostUrl } from "../lib/posts";
 
 interface Props {
   post: CollectionEntry<"blog">;
 }
 
 const { post } = Astro.props;
-const { title, pubDate, category, tags, oldPath, cover, description } = post.data;
+const { title, pubDate, category, tags, cover, description } = post.data;
 const date = pubDate.toISOString().slice(0, 10);
+const url = getPostUrl(post);
 ---
 
 <article class="card post-card">
   {cover && <img src={cover} alt="" loading="lazy" />}
   <div class="card-body">
+    <a class="card-hit-area" href={url} aria-label={`阅读 ${title}`}></a>
     <div class="meta">
       <time datetime={date}>{date}</time>
       {category && <a class="pill" href={`/categories/${encodeURIComponent(category)}/`}>{category}</a>}
     </div>
-    <h2><a href={oldPath}>{title}</a></h2>
+    <h2><a href={url}>{title}</a></h2>
     {description && <p class="muted">{description}</p>}
     <div class="tags">
       {tags.map((tag) => <a class="pill" href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}

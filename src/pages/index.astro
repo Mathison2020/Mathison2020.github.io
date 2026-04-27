@@ -3,22 +3,44 @@ import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PostCard from "../components/PostCard.astro";
 import { site } from "../data/site";
-import { sortPosts } from "../lib/posts";
+import { getPostUrl, sortPosts } from "../lib/posts";
 
 const posts = sortPosts(await getCollection("blog"));
+const featured = posts[0];
+const restPosts = posts.slice(1);
 ---
 
 <BaseLayout>
-  <section class="container hero">
-    <p class="muted">{site.description}</p>
-    <h1>{site.author}</h1>
-    <p>从旧 Hexo 静态页面恢复而来的个人博客，保留原文章链接与主要内容。</p>
+  <section class="magazine-hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Personal Notes / Algorithms / Experiments</p>
+        <h1>{site.author}</h1>
+        <p>{site.description}</p>
+      </div>
+      {
+        featured && (
+          <a class="featured-card" href={getPostUrl(featured)}>
+            <span class="eyebrow">Featured</span>
+            <h2>{featured.data.title}</h2>
+            <p>{featured.data.description}</p>
+            <span class="read-more">阅读文章</span>
+          </a>
+        )
+      }
+    </div>
   </section>
 
   <section class="container page">
-    <h2 class="section-title">最新文章</h2>
-    <div class="grid">
-      {posts.map((post) => <PostCard post={post} />)}
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Archive</p>
+        <h2 class="section-title">全部文章</h2>
+      </div>
+      <span class="muted">{posts.length} posts</span>
+    </div>
+    <div class="magazine-grid">
+      {restPosts.map((post) => <PostCard post={post} />)}
     </div>
   </section>
 </BaseLayout>

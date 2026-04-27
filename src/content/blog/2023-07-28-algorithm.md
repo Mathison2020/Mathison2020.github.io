@@ -3,7 +3,6 @@ title: "基础算法模版"
 pubDate: 2023-07-28
 category: "算法"
 tags: ["算法", "模板"]
-oldPath: "/2023/07/28/algorithm/"
 cover: ""
 description: "基础算法模板 雄关漫道真如铁，而今迈步从头越 1 基础算法1.1 归并排序稳定的排序，很好敲（比起快排我更喜欢归并） 应用：求逆序对 void msort(int a[],int l,int r) { if(l>=r) return; int mid=(l+r)>>1; msort(a,l,mid); msort(a,"
 ---
