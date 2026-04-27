@@ -21,7 +21,14 @@ comment: true
 
 应用：求逆序对
 
-```cpp
+> [!NOTE]
+> **模板速记**
+>
+> - 核心思想：分治后合并两个有序区间
+> - 时间复杂度：$O(n\log n)$
+> - 常见扩展：合并时统计逆序对贡献
+
+```cpp title="merge-sort.cpp"
 void msort(int a[],int l,int r) {
     if(l>=r) return;
     int mid=(l+r)>>1;
@@ -60,9 +67,12 @@ void qsort(int a[],int l,int r) {
 
 应用：二分答案，适用于**单调**的问题，通常是二分答案后进行贪心可行性验证。
 
+> [!TIP]
+> 二分最容易错的不是模板，而是 `check(mid)` 的方向。写模板前先确定答案区间中“可行/不可行”的分界线。
+
 *   整数
 
-```cpp
+```cpp title="binary-search-integer.cpp"
 int bsch(int L,int R) {
     int ans=L;
 	while(L<=R) {
@@ -76,7 +86,7 @@ int bsch(int L,int R) {
 
 *   浮点数
 
-```cpp
+```cpp title="binary-search-real.cpp"
 const double eps=1e-6;
 double bfsch(int L,int R) {
 	while(R-L>eps) {
@@ -976,6 +986,13 @@ RMQ (Range Maximum/Minimum Query) 问题，即区间最值问题
 
 ST表（Sparse Table）解决离线查询区间最值
 
+> [!NOTE]
+> **适用场景**
+>
+> - 静态数组，多次区间最值查询
+> - 预处理 $O(n\log n)$，查询 $O(1)$
+> - 不支持在线修改，若有修改通常考虑线段树
+
 定义 $f(i,j)$ 为以**第 $i$ 个数为起点**，**长度为 $2^j$** 的一段区间中的最大值，则显然状态转移为
 
 $$  
@@ -983,7 +1000,7 @@ f(i,j)=\max{( f(i,j-1),f(i+2^{j-1},j-1))) }
 $$  
 查询同理，只需查询两段（两段中间可能有重叠部分）
 
-```cpp
+```cpp title="sparse-table-rmq.cpp"
 void pre(int n) {
     int t=log2(n)+1;
     for(int j=1;j<t;j++)
@@ -1465,11 +1482,14 @@ bool isPrime2(int x) {	// 朴素判断
 
 **若 $p_j|i$，则对于 $\forall k>j$, $\exists \lambda’$ 使得 $ip_k=\lambda’ p_j$**
 
+> [!IMPORTANT]
+> 线性筛的关键不在“筛掉合数”，而在“每个合数只被它的最小质因子筛一次”。因此遇到 `i % p[j] == 0` 后必须 `break`。
+
 简单证明：
 
 $p$ 数组单调递增，设 $i=\lambda p_j$ ，则 $i p_k=(\lambda p_j) p_k=(\lambda p_k) p_j=\lambda’ p_j$
 
-```cpp
+```cpp title="linear-sieve.cpp"
 void prime() {
     for(int i=2;i<=n;i++) {
         if(!vis[i]) p[++cnt]=i;
