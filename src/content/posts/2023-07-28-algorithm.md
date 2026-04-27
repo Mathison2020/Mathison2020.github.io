@@ -236,7 +236,7 @@ int main() {
 **【例题】**
 
 *   $n$ 个修改：`x c`：`a[x]+=c`
-*   $m$ 个查询：`l r`：查询 $\\sum\_{\[l,r\]}a\_i$
+*   $m$ 个查询：`l r`：查询 $\sum_{[l,r]}a_i$
 *   $1≤n,m≤10^5,\\ −10^9≤x≤10^9,\\ −10^9≤l≤r≤10^9,$
 
 ```cpp
@@ -979,7 +979,7 @@ ST表（Sparse Table）解决离线查询区间最值
 定义 $f(i,j)$ 为以**第 $i$ 个数为起点**，**长度为 $2^j$** 的一段区间中的最大值，则显然状态转移为
 
 $$  
-f(i,j)=\\max{( f(i,j-1),f(i+2^{j-1},j-1))) }  
+f(i,j)=\max{( f(i,j-1),f(i+2^{j-1},j-1))) }  
 $$  
 查询同理，只需查询两段（两段中间可能有重叠部分）
 
@@ -1461,13 +1461,13 @@ bool isPrime2(int x) {	// 朴素判断
 
 #### 5.1.2 线性筛素数
 
-若 $i$ 整除 $p\_j$，则 $i \\times p\_k (k>j)$ 一定被 $p\_j$ 乘某个数筛掉，即
+若 $i$ 整除 $p_j$，则 $i \times p_k (k>j)$ 一定被 $p_j$ 乘某个数筛掉，即
 
-**若 $p\_j|i$，则对于 $\\forall k>j$, $\\exists \\lambda’$ 使得 $ip\_k=\\lambda’ p\_j$**
+**若 $p_j|i$，则对于 $\forall k>j$, $\exists \lambda’$ 使得 $ip_k=\lambda’ p_j$**
 
 简单证明：
 
-$p$ 数组单调递增，设 $i=\\lambda p\_j$ ，则 $i p\_k=(\\lambda p\_j) p\_k=(\\lambda p\_k) p\_j=\\lambda’ p\_j$
+$p$ 数组单调递增，设 $i=\lambda p_j$ ，则 $i p_k=(\lambda p_j) p_k=(\lambda p_k) p_j=\lambda’ p_j$
 
 ```cpp
 void prime() {
@@ -1500,15 +1500,15 @@ void part(int x){
 
 #### 5.1.4\* 短区间二次筛法
 
-【例】给定两个整数 $L$ 和 $R$，在闭区间 $\[L,R\]$ 内找到距离最接近的两个相邻质数 $C\_1$ 和 $C\_2$ 和距离最远的两个相邻质数 $D\_1$ 和 $D\_2$，若存在相同距离的其他相邻质数对，则均输出第一对。
+【例】给定两个整数 $L$ 和 $R$，在闭区间 $[L,R]$ 内找到距离最接近的两个相邻质数 $C_1$ 和 $C_2$ 和距离最远的两个相邻质数 $D_1$ 和 $D_2$，若存在相同距离的其他相邻质数对，则均输出第一对。
 
-$1 \\leq L < R \\leq 2^{31}-1$
+$1 \leq L < R \leq 2^{31}-1$
 
-$1 \\le R-L \\leq 10^6$
+$1 \le R-L \leq 10^6$
 
-先筛小范围质数，再筛 $\[L,R\]$ 中的质数
+先筛小范围质数，再筛 $[L,R]$ 中的质数
 
-（$n$ 是合数，则 $n$ 一定有 $\\sqrt{n}$ 以内的质因子）
+（$n$ 是合数，则 $n$ 一定有 $\sqrt{n}$ 以内的质因子）
 
 ```cpp
 #include<bits/stdc++.h>
@@ -1564,54 +1564,54 @@ int lcm(int x,int y) {return (ll)x*y/gcd(x,y);}
 
 #### 5.2.2 约数个数
 
-设 $x$ 有 $n$ 个质因数 $a\_i(1\\leq i \\leq n)$ ，每个质因数 $a\_i$ 共有 $k\_i$个，即 $a\_i^{k\_i}|x$ ，
+设 $x$ 有 $n$ 个质因数 $a_i(1\leq i \leq n)$ ，每个质因数 $a_i$ 共有 $k_i$个，即 $a_i^{k_i}|x$ ，
 
-则对于 $a\_i$，有 $(k\_i+1)$ 种类选择，即 $0,1,2,\\cdots,k\_i$
+则对于 $a_i$，有 $(k_i+1)$ 种类选择，即 $0,1,2,\cdots,k_i$
 
-因此 **$x$ 的因数个数为 $\\prod\_i{(k\_i+1)}$**
+因此 **$x$ 的因数个数为 $\prod_i{(k_i+1)}$**
 
 #### 5.2.3 约数之和
 
-若 $$N=\\prod\_{i}{p\_i^{c\_i}}$$  
-约数个数：$$\\prod\_{i}{(c\_i+1)}$$  
-约数之和：$$\\prod\_{i}{\\sum\_{j=0}^{c\_i}{p\_i^j}}=\\prod\_i{\\frac{p\_i^{c\_i+1}-1}{p\_i-1}}$$
+若 $$N=\prod_{i}{p_i^{c_i}}$$  
+约数个数：$$\prod_{i}{(c_i+1)}$$  
+约数之和：$$\prod_{i}{\sum_{j=0}^{c_i}{p_i^j}}=\prod_i{\frac{p_i^{c_i+1}-1}{p_i-1}}$$
 
 ### 5.3 逆元
 
 [逆元公式推导详解](https://www.luogu.com.cn/blog/virus2017/post-ni-yuan-ta-zhan-ou-ji-li-dei-shuo-xue-post)
 
-当求解公式：$(a/b)\\%m$ 时，因 $b$ 可能会过大，会出现爆精度的情况，所以需变除法为乘法：
+当求解公式：$(a/b)\%m$ 时，因 $b$ 可能会过大，会出现爆精度的情况，所以需变除法为乘法：
 
-设 $b^{-1}$ 是 $b$ 的逆元，则有 $b\*b^{-1}≡1 \\mod m$；
+设 $b^{-1}$ 是 $b$ 的逆元，则有 $b*b^{-1}≡1 \mod m$；
 
 则  
 $$  
-\\begin{align}  
+\begin{align}  
 (a/b) &=(a/b)_1 \\\\  
 &=(a/b)_b_b^{-1} \\\\  
-&=a_b^{-1}\\mod m  
-\\end{align}  
+&=a_b^{-1}\mod m  
+\end{align}  
 $$  
-即 $a/b$ 的模等于 $a\*b^{-1}$ 的模；
+即 $a/b$ 的模等于 $a*b^{-1}$ 的模；
 
 #### 5.3.1 费马小定理
 
 $$  
-a^p≡a\\mod p  
+a^p≡a\mod p  
 $$
 
 也写作  
 $$  
-a^{p-1}≡1\\mod p  
+a^{p-1}≡1\mod p  
 $$
 
 若 $p$ 是素数，且 $inv$ 与 $p$ 互质，则  
 $$  
-inv^{p-1}≡(1\\%p)  
+inv^{p-1}≡(1\%p)  
 $$  
 根据逆元的定义可得  
 $$  
-x\*inv≡1\\mod p  
+x*inv≡1\mod p  
 $$  
 得出乘法逆元  
 $$  
@@ -1640,20 +1640,20 @@ ll inv(ll a) {
 
 *   当 $b=0$ 时，$gcd(a,b)=a$，因此 $x=1,y=0$
     
-*   当 $b \\neq 0$ 时，$gcd(a,b)=gcd(b,a\\%b)$，则
+*   当 $b \neq 0$ 时，$gcd(a,b)=gcd(b,a\%b)$，则
     
     $$  
-    \\begin{align}  
-    ax+by &= gcd(a,b)=gcd(b,a\\%b)=bx’+(a\\%b)y’ \\\\  
-    &= bx’+(a-b\*\\lfloor a/b\\rfloor)y’ \\\\  
-    &= ay’+b(x’-\\lfloor a/b\\rfloor)y’  
-    \\end{align}  
+    \begin{align}  
+    ax+by &= gcd(a,b)=gcd(b,a\%b)=bx’+(a\%b)y’ \\\\  
+    &= bx’+(a-b*\lfloor a/b\rfloor)y’ \\\\  
+    &= ay’+b(x’-\lfloor a/b\rfloor)y’  
+    \end{align}  
     $$
     
     可得：  
     $$  
-    \\begin{cases} x=y’ \\\\  
-    y=x’-\\lfloor a/b\\rfloor \\end{cases}  
+    \begin{cases} x=y’ \\\\  
+    y=x’-\lfloor a/b\rfloor \end{cases}  
     $$
     
 
@@ -1679,7 +1679,7 @@ ll inv(ll a, ll mod) {
 已知一个质数$M$，求出 $1→n$ 中每个数关于模 $M$ 的逆元
 
 $$  
-inv\[i\]=(M-\\lfloor{M/i}\\rfloor)\*inv\[M\\%i\]%M  
+inv[i]=(M-\lfloor{M/i}\rfloor)*inv[M\%i]%M  
 $$
 
 ```cpp
@@ -1697,7 +1697,7 @@ void init_inv(int n,int p) {
 #### 5.4.1 递推法
 
 $$  
-C\_n^m=C\_{n-1}^{m-1}+C\_{n-1}^{m}  
+C_n^m=C_{n-1}^{m-1}+C_{n-1}^{m}  
 $$
 
 ```cpp
@@ -1711,7 +1711,7 @@ void init(int n) {
 #### 5.4.2 公式法
 
 $$  
-C\_n^m=\\frac{n!}{m!(n-m)!}  
+C_n^m=\frac{n!}{m!(n-m)!}  
 $$
 
 线性预处理阶乘和阶乘的逆元
@@ -1739,7 +1739,7 @@ ll C(ll a,ll b) {
 #### 5.4.3 Lucas定理
 
 $$  
-C(n,m)=C(n/p,m/p)∗C(n\\%p,m\\%p)  
+C(n,m)=C(n/p,m/p)∗C(n\%p,m\%p)  
 $$
 
 适用于 $n,m$ 较大时求组合数
@@ -1775,14 +1775,14 @@ int main() {
 
 $n!$ 中质因数 $p$ 的个数，即统计 $p$ 的出现次数，再统计 $p^2$ 的出现次数，依次类推，即  
 $$  
-\\begin{align}  
-\\text{cnt}(n,p) &=\\lfloor \\frac{n}{p} \\rfloor + \\lfloor \\frac{n}{p^2} \\rfloor + \\lfloor \\frac{n}{p^3} \\rfloor + \\cdots \\\\  
-&= \\lfloor \\frac{n}{p} \\rfloor + \\lfloor \\frac{n/p}{p} \\rfloor + \\lfloor \\frac{n/p^2}{p} \\rfloor + \\cdots  
-\\end{align} \\\\  
+\begin{align}  
+\text{cnt}(n,p) &=\lfloor \frac{n}{p} \rfloor + \lfloor \frac{n}{p^2} \rfloor + \lfloor \frac{n}{p^3} \rfloor + \cdots \\\\  
+&= \lfloor \frac{n}{p} \rfloor + \lfloor \frac{n/p}{p} \rfloor + \lfloor \frac{n/p^2}{p} \rfloor + \cdots  
+\end{align} \\\\  
 $$
 
 $$  
-C^b\_a=\\frac{a!}{b!(a−b)!} = \\prod\_i{p\_i^{\\text{cnt}(a,p\_i)-\\text{cnt}(b,p\_i)-\\text{cnt}(a-b,p\_i)}}  
+C^b_a=\frac{a!}{b!(a−b)!} = \prod_i{p_i^{\text{cnt}(a,p_i)-\text{cnt}(b,p_i)-\text{cnt}(a-b,p_i)}}  
 $$
 
 ```cpp
@@ -1835,10 +1835,10 @@ int main() {
 
 #### 5.5.1 单点求欧拉函数
 
-$1∼N$ 中与 $N$ 互质的数的个数被称为欧拉函数，记为 $\\varphi(N)$。  
-若在算数基本定理中，$$N=p^{a\_1}\_1p^{a\_2}\_2 \\cdots p^{a\_m}\_m$$则：  
+$1∼N$ 中与 $N$ 互质的数的个数被称为欧拉函数，记为 $\varphi(N)$。  
+若在算数基本定理中，$$N=p^{a_1}_1p^{a_2}_2 \cdots p^{a_m}_m$$则：  
 $$  
-\\varphi(N) = N\\times\\frac{p\_1−1}{p\_1}\\times \\frac{p\_2−1}{p\_2}\\times\\cdots\\times\\frac{p\_m−1}{p\_m}  
+\varphi(N) = N\times\frac{p_1−1}{p_1}\times \frac{p_2−1}{p_2}\times\cdots\times\frac{p_m−1}{p_m}  
 $$
 
 ```cpp
@@ -2080,11 +2080,11 @@ int main() {
 
 ### 6.2 排序不等式
 
-逆序 $\\cdot$ 正序 $\\leq$ 乱序 $\\cdot$ 正序 $\\leq$ 正序 $\\cdot$ 正序
+逆序 $\cdot$ 正序 $\leq$ 乱序 $\cdot$ 正序 $\leq$ 正序 $\cdot$ 正序
 
 排队问题，最短时间优先原理，快者优先
 
-【例】$n$ 个人排队打水，每个人的打水时间为 $a\_i$，求最小等待时间之和。
+【例】$n$ 个人排队打水，每个人的打水时间为 $a_i$，求最小等待时间之和。
 
 ```cpp
 #include<bits/stdc++.h>
@@ -2143,7 +2143,7 @@ int main() {
 
 ### 8.1 01背包
 
-> $N$ 件物品，每件物品 $i$ 体积为 $c\_i$，价值为$w\_i$
+> $N$ 件物品，每件物品 $i$ 体积为 $c_i$，价值为$w_i$
 > 
 > 一个容量为 $M$ 的背包，物品总体积不超过背包容量，且总价值最大
 
@@ -2187,7 +2187,7 @@ int main() {
 
 ### 8.2 完全背包
 
-> $N$ 种物品，每种物品 $i$ 体积为 $c\_i$，价值为$w\_i$，每种物品有无限件
+> $N$ 种物品，每种物品 $i$ 体积为 $c_i$，价值为$w_i$，每种物品有无限件
 > 
 > 一个容量为 $M$ 的背包，物品总体积不超过背包容量，且总价值最大
 
@@ -2233,7 +2233,7 @@ int main() {
 
 ### 8.3 多重背包
 
-> $N$ 种物品，每种物品 $i$ 体积为 $c\_i$，价值为$w\_i$，每种物品有 $s\_i$ 件
+> $N$ 种物品，每种物品 $i$ 体积为 $c_i$，价值为$w_i$，每种物品有 $s_i$ 件
 > 
 > 一个容量为 $M$ 的背包，物品总体积不超过背包容量，且总价值最大
 
@@ -2263,7 +2263,7 @@ int main() {
 
 我们对于每个相同种类的物品都进行了一次遍历，而实际上这是冗余的。
 
-我们可以将每种物品的个数进行**二进制拆分**，这样即可囊括每种物品选择 $0 \\to s\_i$ 件的情况
+我们可以将每种物品的个数进行**二进制拆分**，这样即可囊括每种物品选择 $0 \to s_i$ 件的情况
 
 最后将问题转化为01背包
 
@@ -2290,11 +2290,11 @@ int main() {
 
 ### 8.4 混合背包
 
-> $N$ 类物品，每类物品 $i$ 体积为 $c\_i$，价值为$w\_i$，以及一个属性 $s\_i$
+> $N$ 类物品，每类物品 $i$ 体积为 $c_i$，价值为$w_i$，以及一个属性 $s_i$
 > 
-> *   $s\_i=-1$ 表示该类物品仅有一件
-> *   $s\_i=0$ 表示该类物品有无限件
-> *   $s\_i>0$ 表示该类物品有 $s\_i$ 件
+> *   $s_i=-1$ 表示该类物品仅有一件
+> *   $s_i=0$ 表示该类物品有无限件
+> *   $s_i>0$ 表示该类物品有 $s_i$ 件
 > 
 > 一个容量为 $M$ 的背包，物品总体积不超过背包容量，且总价值最大
 
@@ -2329,9 +2329,9 @@ int main() {
 
 ### 8.5 分组背包
 
-> $N$ 组物品，每组中有 $s\_i$ 件
+> $N$ 组物品，每组中有 $s_i$ 件
 > 
-> 第 $i$ 组中的物品 $j$ 体积为 $c\_{ij}$，价值为$w\_{ij}$，同一组内的物品只能选一个
+> 第 $i$ 组中的物品 $j$ 体积为 $c_{ij}$，价值为$w_{ij}$，同一组内的物品只能选一个
 > 
 > 一个容量为 $M$ 的背包，物品总体积不超过背包容量，且总价值最大
 
@@ -2364,7 +2364,7 @@ int main() {
 
 ### 8.6 二维费用背包
 
-> $N$ 件物品，每件物品 $i$ 体积为 $c\_i$，重量为$w\_i$，价值为 $v\_i$
+> $N$ 件物品，每件物品 $i$ 体积为 $c_i$，重量为$w_i$，价值为 $v_i$
 > 
 > 一个容积为 $V$，最大承重为 $M$ 的背包，使得总价值最大
 
@@ -2386,9 +2386,9 @@ int main() {
 
 ### 8.7 有依赖的背包
 
-> $N$ 件物品，每件物品 $i$ 体积为 $c\_i$，重量为$w\_i$，价值为 $v\_i$，其依赖物品编号为 $p\_i$
+> $N$ 件物品，每件物品 $i$ 体积为 $c_i$，重量为$w_i$，价值为 $v_i$，其依赖物品编号为 $p_i$
 > 
-> 即 只有购置了 $p\_i$ 物品，才能购置 $i$ 物品（ $p\_i$ 是 $i$ 的前驱）
+> 即 只有购置了 $p_i$ 物品，才能购置 $i$ 物品（ $p_i$ 是 $i$ 的前驱）
 > 
 > 一个容量为 $M$ 的背包，物品总体积不超过背包容量，且总价值最大
 
