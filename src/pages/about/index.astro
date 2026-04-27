@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { site } from "../../data/site";
+
+const posts = await getCollection("blog");
+const categories = new Set(posts.map((post) => post.data.category));
+const tags = new Set(posts.flatMap((post) => post.data.tags));
+---
+
+<BaseLayout title="关于">
+  <section class="container page">
+    <article class="card article">
+      <h1>关于 {site.author}</h1>
+      <p>{site.description}</p>
+      <p>Student. 这里是从旧 Hexo 静态站点恢复后的个人博客。</p>
+      <div class="grid">
+        <div>
+          <h2>{posts.length}</h2>
+          <p class="muted">文章</p>
+        </div>
+        <div>
+          <h2>{categories.size}</h2>
+          <p class="muted">分类</p>
+        </div>
+        <div>
+          <h2>{tags.size}</h2>
+          <p class="muted">标签</p>
+        </div>
+      </div>
+      <p>
+        <a href={site.github} target="_blank" rel="noreferrer">GitHub</a>
+        ·
+        <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </article>
+  </section>
+</BaseLayout>

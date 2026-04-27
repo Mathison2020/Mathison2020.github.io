@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import friends from "../../data/friends.json";
+---
+
+<BaseLayout title="友情链接">
+  <section class="container page">
+    <h1>友情链接</h1>
+    <div class="grid">
+      {
+        friends.map((friend) => (
+          <article class="card post-card">
+            {friend.avatar && <img src={friend.avatar} alt="" loading="lazy" />}
+            <div class="card-body">
+              <h2><a href={friend.url} target="_blank" rel="noreferrer">{friend.name}</a></h2>
+              <p class="muted">{friend.description}</p>
+              <a href={friend.url} target="_blank" rel="noreferrer">{friend.cta || "访问"}</a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

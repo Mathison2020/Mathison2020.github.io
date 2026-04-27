@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { countBy } from "../../lib/posts";
+
+const posts = await getCollection("blog");
+const categories = Object.entries(countBy(posts.map((post) => post.data.category))).sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="分类">
+  <section class="container page">
+    <h1>分类</h1>
+    <div class="tags">
+      {
+        categories.map(([category, count]) => (
+          <a class="pill" href={`/categories/${encodeURIComponent(category)}/`}>{category} ({count})</a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

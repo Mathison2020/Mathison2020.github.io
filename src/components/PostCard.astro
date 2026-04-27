@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { title, pubDate, category, tags, oldPath, cover, description } = post.data;
+const date = pubDate.toISOString().slice(0, 10);
+---
+
+<article class="card post-card">
+  {cover && <img src={cover} alt="" loading="lazy" />}
+  <div class="card-body">
+    <div class="meta">
+      <time datetime={date}>{date}</time>
+      {category && <a class="pill" href={`/categories/${encodeURIComponent(category)}/`}>{category}</a>}
+    </div>
+    <h2><a href={oldPath}>{title}</a></h2>
+    {description && <p class="muted">{description}</p>}
+    <div class="tags">
+      {tags.map((tag) => <a class="pill" href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
+    </div>
+  </div>
+</article>

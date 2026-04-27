@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.data.oldPath.replace(/^\/|\/$/g, "") },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, pubDate, category, tags, description } = post.data;
+const date = pubDate.toISOString().slice(0, 10);
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="container page">
+    <article class="card article">
+      <h1>{title}</h1>
+      <div class="meta">
+        <time datetime={date}>{date}</time>
+        {category && <a class="pill" href={`/categories/${encodeURIComponent(category)}/`}>{category}</a>}
+        {tags.map((tag) => <a class="pill" href={`/tags/${encodeURIComponent(tag)}/`}>#{tag}</a>)}
+      </div>
+      <div class="article-content">
+        <Content />
+      </div>
+    </article>
+  </section>
+</BaseLayout>

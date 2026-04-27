@@ -1,0 +1,32 @@
+{
+  "name": "mathison2020.github.io",
+  "version": "1.0.0",
+  "description": "Recovered personal blog powered by Astro.",
+  "scripts": {
+    "recover": "node scripts/recover-content.mjs",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mathison2020/Mathison2020.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Mathison2020/Mathison2020.github.io/issues"
+  },
+  "homepage": "https://github.com/Mathison2020/Mathison2020.github.io#readme",
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/sitemap": "^3.7.2",
+    "astro": "^6.1.9",
+    "cheerio": "^1.2.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
+    "turndown": "^7.2.4"
+  }
+}

@@ -1,0 +1,24 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostCard from "../components/PostCard.astro";
+import { site } from "../data/site";
+import { sortPosts } from "../lib/posts";
+
+const posts = sortPosts(await getCollection("blog"));
+---
+
+<BaseLayout>
+  <section class="container hero">
+    <p class="muted">{site.description}</p>
+    <h1>{site.author}</h1>
+    <p>从旧 Hexo 静态页面恢复而来的个人博客，保留原文章链接与主要内容。</p>
+  </section>
+
+  <section class="container page">
+    <h2 class="section-title">最新文章</h2>
+    <div class="grid">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+</BaseLayout>

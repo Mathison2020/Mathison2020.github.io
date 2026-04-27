@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { countBy } from "../../lib/posts";
+
+const posts = await getCollection("blog");
+const tags = Object.entries(countBy(posts.flatMap((post) => post.data.tags))).sort((a, b) => b[1] - a[1]);
+---
+
+<BaseLayout title="标签">
+  <section class="container page">
+    <h1>标签</h1>
+    <div class="tags">
+      {tags.map(([tag, count]) => <a class="pill" href={`/tags/${encodeURIComponent(tag)}/`}>{tag} ({count})</a>)}
+    </div>
+  </section>
+</BaseLayout>
