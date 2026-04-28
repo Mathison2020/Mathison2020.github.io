@@ -21,7 +21,7 @@ export const coverImageConfig: CoverImageConfig = {
 
 	randomCoverImage: {
 		// 随机封面图功能开关
-		enable: false,
+		enable: true,
 		// 封面图API列表
 		apis: [
 			"https://t.alcy.cc/pc",
@@ -31,6 +31,6 @@ export const coverImageConfig: CoverImageConfig = {
 		// API失败时的回退图片路径（相对于src目录或以/开头的public目录路径）
 		fallback: "assets/images/cover.avif",
 		// 是否显示加载动画
-		showLoading: false,
+		showLoading: true,
 	},
 };

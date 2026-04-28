@@ -48,14 +48,14 @@ export const siteConfig: SiteConfig = {
 		// 是否开启卡片边框和阴影，开启后让网站更有立体感
 		border: true,
 		// 是否让卡片风格跟随主题色相
-		followTheme: false,
+		followTheme: true,
 	},
 
 	// Favicon 配置
 	favicon: [
 		{
 			// 图标文件路径
-			src: "/favicon.png",
+			src: "/logo.svg",
 			// 可选，指定主题 'light' | 'dark'
 			// theme: "light",
 			// 可选，图标大小
@@ -73,7 +73,7 @@ export const siteConfig: SiteConfig = {
 		// 4. 网络图片: { type: "url", value: "https://example.com/logo.png", alt: "Logo" }
 		logo: {
 			type: "image",
-			value: "/favicon.png",
+			value: "/logo.svg",
 			alt: "Mathison's Blog",
 		},
 		// 导航栏标题
@@ -145,7 +145,7 @@ export const siteConfig: SiteConfig = {
 		// 是否在文章列表中显示标签
 		showTags: true,
 		// 文章简介显示行数，设为 0 则不截断
-		descriptionLines: 2,
+		descriptionLines: 3,
 		// 是否允许用户切换布局
 		allowSwitch: true,
 		// 网格布局配置，仅在 defaultMode 为 "grid" 或允许切换布局时生效
@@ -153,14 +153,14 @@ export const siteConfig: SiteConfig = {
 			// 是否开启瀑布流布局，同时有封面图和无封面图的混合文章推荐开启
 			masonry: true,
 			// 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数
-			columnWidth: 320,
+			columnWidth: 300,
 		},
 	},
 
 	// 分页配置
 	pagination: {
 		// 每页显示的文章数量
-		postsPerPage: 10,
+		postsPerPage: 12,
 	},
 
 	// 统计分析

@@ -5,7 +5,8 @@ export const announcementConfig: AnnouncementConfig = {
 	title: "公告",
 
 	// 公告内容
-	content: "欢迎来到 Mathison's Blog，这里记录算法、实验和学习笔记。",
+	content:
+		"欢迎来到 Mathison's Blog。这里记录算法模板、微机实验、学习笔记和博客重构过程。",
 
 	// 是否允许用户关闭公告
 	closable: true,

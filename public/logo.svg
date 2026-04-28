@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Mathison's Blog logo</title>
+  <desc id="desc">A rounded blue gradient logo with the letter M and orbit lines.</desc>
+  <defs>
+    <linearGradient id="bg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="0.52" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="32" y1="20" x2="96" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.58"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1d4ed8" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <rect x="12" y="12" width="104" height="104" rx="28" fill="url(#bg)" filter="url(#shadow)"/>
+  <path d="M34 86V42h12l18 25 18-25h12v44H82V61L66 82h-4L46 61v25H34Z" fill="white"/>
+  <path d="M28 42c14-17 42-24 65-10" fill="none" stroke="url(#shine)" stroke-width="5" stroke-linecap="round" opacity="0.72"/>
+  <path d="M100 86c-15 17-43 22-65 9" fill="none" stroke="url(#shine)" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+  <circle cx="96" cy="36" r="5" fill="#fef3c7"/>
+  <circle cx="32" cy="92" r="4" fill="#bfdbfe"/>
+</svg>

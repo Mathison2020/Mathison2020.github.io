@@ -3,7 +3,7 @@ import type { Live2DModelConfig, SpineModelConfig } from "../types/config";
 // Spine 看板娘配置
 export const spineModelConfig: SpineModelConfig = {
 	// Spine 看板娘开关
-	enable: false,
+	enable: true,
 
 	// Spine模型配置
 	model: {
@@ -50,14 +50,11 @@ export const spineModelConfig: SpineModelConfig = {
 		],
 		// 点击时随机显示的文字消息
 		clickMessages: [
-			"你好呀！我是流萤~",
-			"今天也要加油哦！✨",
-			"想要一起去看星空吗？🌟",
-			"记得要好好休息呢~",
-			"有什么想对我说的吗？💫",
-			"让我们一起探索未知的世界吧！🚀",
-			"每一颗星星都有自己的故事~⭐",
-			"希望能带给你温暖和快乐！💖",
+			"欢迎来到 Mathison's Blog。",
+			"今天也要写点有意思的东西。",
+			"算法模板、实验记录和碎碎念都在这里。",
+			"写代码前，先想清楚边界条件。",
+			"别忘了休息，长文可以慢慢读。",
 		],
 		// 文字显示时间（毫秒）
 		messageDisplayTime: 3000,
