@@ -1,7 +1,7 @@
 ---
-title: "基础算法模版"
+title: " 【古法编程】基础算法模版"
 published: 2023-07-28
-description: "基础算法模板 雄关漫道真如铁，而今迈步从头越 1 基础算法1.1 归并排序稳定的排序，很好敲（比起快排我更喜欢归并） 应用：求逆序对 void msort(int a[],int l,int r) { if(l>=r) return; int mid=(l+r)>>1; msort(a,l,mid); msort(a,"
+description: "AI时代的古法编程遗产"
 image: "api"
 tags: ["算法", "模板"]
 category: "算法"
