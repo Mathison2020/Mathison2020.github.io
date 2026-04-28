@@ -181,7 +181,7 @@ upper_bound(a,a+n,x,cmp)-a-1; 	// 最后一个大于等于x的元素位置
 
 *   法一：二分
 
-```cpp
+```cpp title="section-1-5-1.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=100010;
@@ -220,7 +220,7 @@ int main() {
 
 *   法二：lowerbound & upperbound 定位
 
-```cpp
+```cpp title="section-1-5-1-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 int n,m,a[100010];
@@ -249,7 +249,7 @@ int main() {
 *   $m$ 个查询：`l r`：查询 $\sum_{[l,r]}a_i$
 *   $1≤n,m≤10^5,\\ −10^9≤x≤10^9,\\ −10^9≤l≤r≤10^9,$
 
-```cpp
+```cpp title="section-1-5-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1e5+10;
@@ -432,7 +432,7 @@ void remove() {	// 将头结点删除，需要保证头结点存在
 2.  `D k`，表示删除第 $k$ 个插入的数后面的数（当 $k$ 为 $0$ 时，表示删除头结点）。
 3.  `I k x`，表示在第 $k$ 个插入的数后面插入一个数 $x$（此操作中 $k$ 均大于 $0$）。
 
-```cpp
+```cpp title="section-2-1.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=100010;
@@ -488,7 +488,7 @@ void remove(int k) {	// 删除节点k
 4.  `IL k x`，表示在第 $k$ 个插入的数左侧插入一个数。
 5.  `IR k x`，表示在第 $k$ 个插入的数右侧插入一个数。
 
-```cpp
+```cpp title="section-2-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=100011;
@@ -723,7 +723,7 @@ dq.push_back(i);
 
 【例题】长度不超过 $k$ 的最大连续子区间和
 
-```cpp
+```cpp title="section-2-4-3.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=100010;
@@ -802,7 +802,7 @@ void clear() { tot=0; }
 
 #### 2.5.3 堆排序
 
-```cpp
+```cpp title="section-2-5-3.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=100010;
@@ -919,7 +919,7 @@ void dfs(int x) {
 
 ### 2.8 Trie字典树
 
-```cpp
+```cpp title="section-2-8.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=100010,M=1<<7;
@@ -959,7 +959,7 @@ int main() {
 
 > 下面先放个运用Huffman树思想的例子
 
-```cpp
+```cpp title="section-2-9.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 int n,ans,t;
@@ -1000,7 +1000,7 @@ f(i,j)=\max{( f(i,j-1),f(i+2^{j-1},j-1))) }
 $$  
 查询同理，只需查询两段（两段中间可能有重叠部分）
 
-```cpp nocollapse
+```cpp title="section-2-10.cpp"
 void pre(int n) {
     int t=log2(n)+1;
     for(int j=1;j<t;j++)
@@ -1030,7 +1030,7 @@ int main() {
 
 *   全排列（搜索回溯）
 
-```cpp
+```cpp title="section-3-1.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1<<5;
@@ -1056,7 +1056,7 @@ int main() {
 
 *   八皇后
 
-```cpp
+```cpp title="section-3-1-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=10;
@@ -1090,7 +1090,7 @@ int main() {
 
 平面的遍历一般使用方向向量（注意是四联通还是八联通）
 
-```cpp
+```cpp title="section-3-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=110;
@@ -1151,7 +1151,7 @@ int main() {
 
 ### 4.1 拓扑排序
 
-```cpp nocollapse
+```cpp title="section-4-1.cpp"
 queue<int> q;
 void topsort() {
     while(!q.empty()) {
@@ -1262,7 +1262,7 @@ void spfa() {
 
 #### 4.3.3 Bellman-Ford 边数限制最短路
 
-```cpp nocollapse
+```cpp title="section-4-3-3.cpp"
 int n,m,k,dis[N],pre[N];
 struct Edge{int x,y,z;} e[M];
 void Bellman_Ford() {
@@ -1286,7 +1286,7 @@ int main() {
 
 ### 4.4 Floyd 最短路
 
-```cpp nocollapse
+```cpp title="section-4-4.cpp"
 void Floyd() {
     for(int k=1;k<=n;k++)
         for(int i=1;i<=n;i++)
@@ -1311,7 +1311,7 @@ int main() {
 
 适用于稀疏图
 
-```cpp nocollapse
+```cpp title="section-4-5-1.cpp"
 struct Node{int x,y,z;} e[N<<1];
 bool cmp(Node a,Node b) {return a.z<b.z;}
 int find(int x) {
@@ -1342,7 +1342,7 @@ int main() {
 
 适用于稠密图
 
-```cpp nocollapse
+```cpp title="section-4-5-2.cpp"
 priority_queue<pair<int,int> > q;
 void prim() {
     memset(dis,0x3f3f3f,sizeof dis);
@@ -1381,7 +1381,7 @@ int main() {
 
 #### 4.6.1 二分图判定（染色法）
 
-```cpp nocollapse
+```cpp title="section-4-6-1.cpp"
 void dfs(int x) {
     for(int i=head[x];i;i=nxt[i]) {
         int y=ver[i];
@@ -1408,7 +1408,7 @@ int main() {
 
 寻找最大匹配
 
-```cpp nocollapse
+```cpp title="section-4-6-2.cpp"
 /* …… */
 int find(int x) {
     for(int i=head[x];i;i=nxt[i]) {
@@ -1530,7 +1530,7 @@ $1 \le R-L \leq 10^6$
 
 （$n$ 是合数，则 $n$ 一定有 $\sqrt{n}$ 以内的质因子）
 
-```cpp
+```cpp title="section-5-1-4.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1e6+10;
@@ -1764,7 +1764,7 @@ $$
 
 适用于 $n,m$ 较大时求组合数
 
-```cpp nocollapse
+```cpp title="section-5-4-3.cpp"
 ll ksm(ll a,int k) {
     ll res=1ll;
     for(;k;(a*=a)%=mod,k>>=1) if(k&1) (res*=a)%=mod; 
@@ -1805,7 +1805,7 @@ $$
 C^b_a=\frac{a!}{b!(a−b)!} = \prod_i{p_i^{\text{cnt}(a,p_i)-\text{cnt}(b,p_i)-\text{cnt}(a-b,p_i)}}  
 $$
 
-```cpp
+```cpp title="section-5-4-4.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=5010;
@@ -1861,7 +1861,7 @@ $$
 \varphi(N) = N\times\frac{p_1−1}{p_1}\times \frac{p_2−1}{p_2}\times\cdots\times\frac{p_m−1}{p_m}  
 $$
 
-```cpp
+```cpp title="section-5-5-1.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 int n,tmp;
@@ -1909,7 +1909,7 @@ void eular() {
 
 每次选择一列中绝对值最大的元素作为主元，保证消元过程收敛
 
-```cpp
+```cpp title="section-5-6.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=110;
@@ -1971,7 +1971,7 @@ int main() {
 
 选多少个点使得每个区间至少有一个点：**右端点排序**
 
-```cpp
+```cpp title="section-6-1-1.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=100010;
@@ -2000,7 +2000,7 @@ int main() {
 
 选择尽量少的区间，将指定线段区间完全覆盖：**左端点排序**
 
-```cpp
+```cpp title="section-6-1-3.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=100010;
@@ -2034,7 +2034,7 @@ int main() {
 
 每次向**空余位置最靠左的分组**内放区间
 
-```cpp
+```cpp title="section-6-1-4.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=100010;
@@ -2060,7 +2060,7 @@ int main() {
 
 也可使用差分寻找**区间重叠最厚处**即为分组数
 
-```cpp
+```cpp title="section-6-1-4-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 map<int,int> d;
@@ -2083,7 +2083,7 @@ int main() {
 
 以及一些奇技淫巧？
 
-```cpp
+```cpp title="section-6-1-4-3.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1e5+5;
@@ -2106,7 +2106,7 @@ int main() {
 
 【例】$n$ 个人排队打水，每个人的打水时间为 $a_i$，求最小等待时间之和。
 
-```cpp
+```cpp title="section-6-2.cpp"
 #include<bits/stdc++.h>
 long long n,ans,a[100010];
 int main() {
@@ -2128,7 +2128,7 @@ int main() {
 
 【例】[跳石头](https://www.luogu.com.cn/problem/P2678)
 
-```cpp
+```cpp title="section-6-3.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 int l,n,m,d[50010],ans; 
@@ -2169,7 +2169,7 @@ int main() {
 
 朴素解法：
 
-```cpp
+```cpp title="section-8-1.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1010,M=1010;
@@ -2188,7 +2188,7 @@ int main() {
 
 改变遍历顺序，滚动数组空间优化
 
-```cpp
+```cpp title="section-8-1-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int M=1010;
@@ -2215,7 +2215,7 @@ int main() {
 
 朴素解法：
 
-```cpp
+```cpp title="section-8-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=1010,M=1010;
@@ -2234,7 +2234,7 @@ int main() {
 
 滚动数组优化与01背包的差别在于体积的遍历顺序：
 
-```cpp
+```cpp title="section-8-2-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int M=1010;
@@ -2261,7 +2261,7 @@ int main() {
 
 遍历每件物品，对每件物品进行决策
 
-```cpp
+```cpp title="section-8-3-1.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int M=101;
@@ -2287,7 +2287,7 @@ int main() {
 
 最后将问题转化为01背包
 
-```cpp
+```cpp title="section-8-3-2.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int M=2010;
@@ -2318,7 +2318,7 @@ int main() {
 > 
 > 一个容量为 $M$ 的背包，物品总体积不超过背包容量，且总价值最大
 
-```cpp
+```cpp title="section-8-4.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=10010,M=1010;
@@ -2361,7 +2361,7 @@ int main() {
 
 若内外层枚举顺序反置，则失去了组内约束，变成了普通01背包
 
-```cpp
+```cpp title="section-8-5.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=101;
@@ -2388,7 +2388,7 @@ int main() {
 > 
 > 一个容积为 $V$，最大承重为 $M$ 的背包，使得总价值最大
 
-```cpp
+```cpp title="section-8-6.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 int n,m1,m2,c1,c2,w,f[110][110];
@@ -2414,7 +2414,7 @@ int main() {
 
 树形结构，使用记忆化搜索更新
 
-```cpp
+```cpp title="section-8-7.cpp"
 #include<bits/stdc++.h>
 using namespace std;
 const int N=110;
